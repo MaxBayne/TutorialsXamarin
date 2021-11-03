@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.StackLayout1">
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Padding="20">
+            <BoxView BackgroundColor="Red" HeightRequest="50"/>
+            <BoxView BackgroundColor="Green" HeightRequest="120"/>
+            <BoxView BackgroundColor="Yellow"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

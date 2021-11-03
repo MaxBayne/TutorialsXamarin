@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.StaticResourcesPage"
+             Title="Static Resources">
+
+    <!--Resources is Store can be used For Store (string,DataTemplates,Colors,Styles)-->
+    <!--Resources Can be Scoped in Application Level (inside App.xaml)-->
+    <!--Resources Can be Scoped in Page Level (inside Page.xaml)-->
+    <!--Resources Can be Scoped in Control Level (inside Control)-->
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!--Store Static String-->
+            <x:String x:Key="Greeting">Iam Mohammed Salah</x:String>
+
+            <!--Store Colors-->
+            <Color x:Key="RedColor">Red</Color>
+            <Color x:Key="GreenColor">Green</Color>
+
+            <!--Store Styles-->
+            <Style x:Key="GrayButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Gray"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Margin" Value="15"/>
+            </Style>
+            
+            <!--Store DataTemplates used inside ListView and Collection Views and more-->
+            <DataTemplate x:Key="DTText">
+                <Label Text="How Are You , Iam From ResourceDictionary"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{StaticResource Greeting}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" TextColor="{StaticResource GreenColor }" />
+            <Entry Placeholder="Enter You Name" VerticalOptions="Start" Style="{StaticResource whiteEntryStyle}"/>
+            <Button Style="{StaticResource GrayButtonStyle}" Text="Click Me"/>
+
+            <BoxView StyleClass="SilverBGBox,RoundedBox"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

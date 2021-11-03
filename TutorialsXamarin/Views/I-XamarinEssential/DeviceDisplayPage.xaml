@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.DeviceDisplayPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Show Display Info" Clicked="BtnDisplayInfo_OnClicked"/>
+            <Button Text="Keep Screen On" Clicked="BtnKeepScreenOn_OnClicked"/>
+            <Button Text="Keep Screen Off" Clicked="BtnKeepScreenOff_OnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

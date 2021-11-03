@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.DeviceServicesPage"
+             Title="Device Services">
+    <ContentPage.Content>
+        <ScrollView>
+
+
+            <StackLayout>
+                <Label Text="GeoLocation"/>
+                <Button  Text="Get Current Location" Clicked="BtnGeoLocation_OnClicked"/>
+
+                <Label Text="GeoCoding"/>
+                <Button  Text="Convert Location To Address" Clicked="BtnConvertLocationToAddress_OnClicked"/>
+                <Button  Text="Convert Address To Location" Clicked="BtnConvertAddressToLocation_OnClicked"/>
+
+                <Label Text="Connectivity"/>
+                <Button  Text="Check Connectivity" Clicked="BtnCheckConnectivity_OnClicked"/>
+                <Button  Text="Get Connection Type" Clicked="BtnGetConnectionType_OnClicked"/>
+
+                <Label Text="Battery"/>
+                <Button  Text="Get Battery Info" Clicked="BtnGetBatteryInfo_OnClicked"/>
+
+                <Label Text="Vibration"/>
+                <Button  Text="Make Vibration 2 Second" Clicked="BtnMakeVibration_OnClicked"/>
+
+
+                <Label Text="Text To Speech"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button HorizontalOptions="FillAndExpand"  Text="Speak Text" Clicked="BtnTextToSpeech_OnClicked"/>
+                    <Button HorizontalOptions="FillAndExpand"  Text="Stop Speak" Clicked="BtnStopSpeech_OnClicked"/>
+                </StackLayout>
+                <Label Text="Pitch"/>
+                <Slider x:Name="SldPitch" ValueChanged="SldPitch_OnValueChanged" Maximum="2" />
+                <Label Text="Volume"/>
+                <Slider x:Name="SldVolume" ValueChanged="SldVolume_OnValueChanged" Maximum="1" Value="1" />
+
+                <Label Text="FlashLight"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button HorizontalOptions="FillAndExpand"  Text="Flashlight ON" Clicked="BtnFlashLightON_OnClicked"/>
+                    <Button HorizontalOptions="FillAndExpand"  Text="Flashlight OFF" Clicked="BtnFlashLightOFF_OnClicked"/>
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

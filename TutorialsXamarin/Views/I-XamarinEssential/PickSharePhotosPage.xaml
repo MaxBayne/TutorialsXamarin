@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.PickSharePhotosPage"
+             xmlns:vm="clr-namespace:TutorialsXamarin.ViewModels"
+             Title="{Binding Path=Title}">
+
+    <ContentPage.BindingContext>
+        <vm:PictureViewModel />
+    </ContentPage.BindingContext>
+    
+    
+    <ContentPage.Content>
+        
+        <Grid x:DataType="vm:PictureViewModel">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <BoxView Grid.Row="0" x:Name="BoxView" BackgroundColor="LightBlue" Margin="10"/>
+            <Image Grid.Row="0" x:Name="ImgPickedImage" Source="{Binding Path=ImageData}"/>
+
+            <Button Grid.Row="1" x:Name="BtnPickPhoto" Text="{Binding ButtonLabel}" Command="{Binding Path=PickPhotoCommand}" />
+            <Button Grid.Row="2" x:Name="BtnSharePhoto" Text="Share Photo" Command="{Binding Path=ShareCommand}" IsEnabled="{Binding Path=EnabledShareButton}" />
+            <Button Grid.Row="3" x:Name="BtnFixSettings" Text="Fix Settings" Command="{Binding Path=SettingsCommand}" IsVisible="{Binding Path=ShowFixSettings}" />
+            
+            <Button Grid.Row="4" Text="Hide KeyBoard" Command="{Binding Path=ToggleKeyBoardCommand}"/>
+            <Entry Grid.Row="5"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.CollectionViewPage"
+             xmlns:models="clr-namespace:TutorialsXamarin.Common.Models;assembly=TutorialsXamarin.Common"
+             Title="CollectionView">
+
+    <ContentPage.Resources>
+        <!--<ResourceDictionary>
+            <x:Array x:Key="lstCourses" Type="{x:Type models:Course}">
+                <models:Course Id="100" Title="Xamarin" Description="Xamarin Forms" Image="Chrome.png" Price="1500"/>
+                <models:Course Id="200" Title="Asp.net" Description="Learn Asp.net Core" Image="iTunes.png" Price="874"/>
+                <models:Course Id="300" Title="C#" Description="Learn C# .net" Image="Twitter.png" Price="1212"/>
+                <models:Course Id="400" Title="F#" Description="Learn F# .net" Image="iTunes.png" Price="888"/>
+                <models:Course Id="500" Title="Android" Description="Learn Android" Image="Twitter.png" Price="444"/>
+                <models:Course Id="600" Title="IOS" Description="Learn IOS" Image="Chrome.png" Price="1500"/>
+                <models:Course Id="700" Title="WPF" Description="Learn WPF" Image="Twitter.png" Price="455"/>
+                <models:Course Id="800" Title="Arduino" Description="Learn Arduino" Image="Chrome.png" Price="331"/>
+                <models:Course Id="900" Title="Raspery PI" Description="Learn Raspery" Image="Twitter.png" Price="468"/>
+                <models:Course Id="100" Title="Xamarin" Description="Xamarin Forms" Image="Chrome.png" Price="2212"/>
+                <models:Course Id="200" Title="Asp.net" Description="Learn Asp.net Core" Image="iTunes.png" Price="2133"/>
+                <models:Course Id="300" Title="C#" Description="Learn C# .net" Image="Twitter.png" Price="1545"/>
+                <models:Course Id="400" Title="F#" Description="Learn F# .net" Image="iTunes.png" Price="355"/>
+                <models:Course Id="500" Title="Android" Description="Learn Android" Image="Twitter.png" Price="784"/>
+                <models:Course Id="600" Title="IOS" Description="Learn IOS" Image="Chrome.png" Price="644"/>
+                <models:Course Id="700" Title="WPF" Description="Learn WPF" Image="Twitter.png" Price="300"/>
+                <models:Course Id="800" Title="Arduino" Description="Learn Arduino" Image="Chrome.png" Price="500"/>
+                <models:Course Id="900" Title="Raspery PI" Description="Learn Raspery" Image="Twitter.png" Price="1400"/>
+            </x:Array>
+        </ResourceDictionary>-->
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear" IconImageSource="trash24.png"  Clicked="MenuItem_OnClicked" ClassId="clear"/>
+        <ToolbarItem Text="Refresh" IconImageSource="refresh24.png" Clicked="MenuItem_OnClicked" ClassId="refresh"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            
+            <RefreshView x:Name="RvRefreshCollection" 
+                         Refreshing="rv_RefreshCollection_Refreshing">
+
+                <CollectionView x:Name="CvCourses" 
+                                x:DataType="models:Course"
+                                SelectionMode="Single"
+                                SelectionChanged="CVCourses_SelectionChanged"
+                                IsGrouped="False" >
+
+                    <!--Set Layouts Type Linear or Grid-->
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"  ItemSpacing="5"  />
+                        <!--<GridItemsLayout Orientation="Horizontal" HorizontalItemSpacing="5" VerticalItemSpacing="5"  />-->
+                    </CollectionView.ItemsLayout>
+
+                    <!--Set Message For Empty Collection Data-->
+                    <CollectionView.EmptyView>
+                        <Label Text="Sorry , No Results"
+                               TextColor="Silver"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               />
+                    </CollectionView.EmptyView>
+
+                    <!--Header for Main Collection-->
+                    <CollectionView.Header>
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="3"
+                                   Text="Courses List" 
+                                   FontSize="Title" 
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                            <SearchBar x:Name="TxtSearchedText"
+                                       Grid.Row="1"
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="3"
+                                       TextColor="Black"
+                                       PlaceholderColor="Silver"
+                                       Placeholder="Enter Title To Search"
+                                       TextChanged="SearchBar_TextChanged" />
+
+                            <Label Grid.Row="2" 
+                                   Grid.Column="0"
+                                   Text="Icon" 
+                                   TextColor="Black"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                            <Label Grid.Row="2"
+                                   Grid.Column="1" 
+                                   Text="Title"
+                                   TextColor="Black"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                            
+                            <Label Grid.Row="2" 
+                                   Grid.Column="2"
+                                   Text="Price"   
+                                   TextColor="Black"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                            
+
+                        </Grid>
+
+
+
+                    </CollectionView.Header>
+
+                    <!--Header for Group inside Collection-->
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Title}"  />
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
+                    <!--Item Template for Item inside Collection-->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+
+                                    <!--Options Remain Open After Swipe Gesture-->
+                                    <SwipeItems Mode="Reveal">
+
+                                        <SwipeItem Text="Call" 
+                                                   BackgroundColor="Green"/>
+
+                                        <SwipeItem x:Name="CmdDisplayInfo"
+                                                   Text="Info"
+                                                   BackgroundColor="SkyBlue"
+                                                   Clicked="CmdDisplayInfo_OnClicked"
+                                                   CommandParameter="{Binding Title}"/>
+
+                                    </SwipeItems>
+
+                                </SwipeView.LeftItems>
+
+                                <SwipeView.RightItems>
+
+                                    <!--Execute Command after Swipe Gesture-->
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem x:Name="CmdRemoveItem"
+                                                   Text="Remove"
+                                                   BackgroundColor="Red"
+                                                   Clicked="Cmd_RemoveItem_OnClicked"
+                                                   CommandParameter="{Binding Id}"/>
+                                    </SwipeItems>
+
+                                </SwipeView.RightItems>
+
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="70"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding Image}" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                                           x:DataType="models:Course" />
+                                    <Label Text="{Binding Title}" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding Description}" Grid.Row="1" Grid.Column="1"/>
+                                    <Label Text="{Binding Price}" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" />
+                                </Grid>
+                            </SwipeView>
+
+                            
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <!--Footer for Group inside Collection-->
+                    <CollectionView.GroupFooterTemplate>
+                        <DataTemplate>
+                            <Label Text="GroupFooter"/>
+                        </DataTemplate>
+                    </CollectionView.GroupFooterTemplate>
+
+                    <!--Footer For Main Collection-->
+                    <CollectionView.Footer>
+                        <Label Text="All Rights Reserved"
+                               HorizontalTextAlignment="Center"/>
+                    </CollectionView.Footer>
+
+                </CollectionView>
+
+            </RefreshView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

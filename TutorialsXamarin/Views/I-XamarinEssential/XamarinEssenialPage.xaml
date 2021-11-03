@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.XamarinEssenialPage"
+             Title="Essentials">
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout>
+                <Button Text="Device Services" Clicked="BtnDeviceServices_OnClicked"/>
+                <Button Text="Device Sensors" Clicked="BtnDeviceSensors_OnClicked"/>
+                <Button Text="Device Storage" Clicked="BtnDeviceStorage_OnClicked"/>
+                <Button Text="Device Info" Clicked="BtnDeviceInfo_OnClicked"/>
+                <Button Text="Device Display" Clicked="BtnDeviceDisplay_OnClicked"/>
+                <Button Text="App Info" Clicked="BtnAppInfo_OnClicked"/>
+                <Button Text="Integration With Apps" Clicked="BtnIntegwithApp_OnClicked"/>
+                <Button Text="Main Thread" Clicked="BtnMainThread_OnClicked"/>
+                <Button Text="Version Traker" Clicked="BtnVersionTracker_OnClicked"/>
+                
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:TutorialsXamarin.Converters"
+             xmlns:models="clr-namespace:TutorialsXamarin.Common.Models;assembly=TutorialsXamarin.Common"
+             x:Class="TutorialsXamarin.Views.BindingToObservableCollectionPage"
+             Title="ObservalCollection">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Take Instance From Class Converter Called [DeciamlToStringConverter]-->
+            <converters:DecimalToStringConverter x:Key="ResDescimalToStringConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        
+        
+        <StackLayout>
+            <ListView x:Name="lsvPies" VerticalOptions="FillAndExpand" 
+                      CachingStrategy="RecycleElement"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Pie"> <!--set the data Type for using compiled data binding-->
+                        <!--<TextCell Text="{Binding Name}" Detail="{Binding Description}"/>-->
+                        <!--<ImageCell ImageSource="{Binding Photo}" Text="{Binding Name}" Detail="{Binding Description}" DetailColor="Gray"/>-->
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding Photo,TargetNullValue='https://files.softicons.com/download/social-media-icons/wooden-social-media-icons-by-design-bolts/png/128x128/Aim.png'}"/>
+                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                                <Label Text="{Binding Price,Converter={StaticResource  ResDescimalToStringConverter}}" TextColor="Gray" VerticalOptions="Center" HorizontalOptions="End" Padding="10" />
+                            </StackLayout>
+                        </ViewCell>
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="btnAddPie" Text="Add Pie" Clicked="btnAddPie_Clicked"/>
+            <Button x:Name="btnSelectPie" Text="Select Pie" Clicked="btnSelectPie_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.StylesPage"
+             Title="Styles" 
+             Style="{DynamicResource PageStyle}">
+
+            <!--
+            You Can Define Styles in Three Level
+            1-Control Level inside Resources Section like <Label.Resources>
+            2-Page Level inside Resources Section like <ContentPage.Resources>
+            3-App Level inside App.xaml
+            -->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <!--Using Properties For Styles-->
+            <Color x:Key="RedColor">Red</Color>
+            <Color x:Key="GreenColor">Green</Color>
+            <x:Double x:Key="FontSize30">30</x:Double>
+            <OnPlatform x:Key="orangeColor" 
+                        x:TypeArguments="Color"
+                        Android="Orange"
+                        iOS="Black"/>
+
+            <!--Using Object Type For Styles-->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="FontSize" Value="Title"/>
+            </Style>
+
+            <!--Using Object Type For Styles and Apply To Derived Type Form Class (InputView) like Entry,Label-->
+            <Style TargetType="InputView" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="Yellow"/>
+                <Setter Property="TextColor" Value="Green"/>
+            </Style>
+
+
+            <!--CanCascade Will Allow Style to Have Base Type [InputView] Style With its Style-->
+            <Style x:Key="EntryCanCascadeStyle" TargetType="Entry" CanCascade="True"  >
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+
+            
+            <!--Using Specific Object For Styles By Key-->
+            <Style x:Key="GrayButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Gray"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="Margin" Value="15"/>
+            </Style>
+
+             <!--Can Inherit Style from base Style-->
+            <Style x:Key="StylButtonBase" TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="grayButtonStyle" TargetType="Button" BasedOn="{StaticResource StylButtonBase}">
+                <Setter Property="BackgroundColor" Value="Gray"/>
+            </Style>
+
+            <Style x:Key="redButtonStyle" TargetType="Button" BasedOn="{StaticResource StylButtonBase}">
+                <Setter Property="BackgroundColor" Value="Red"/>
+            </Style>
+
+            <Style x:Key="blueButtonStyle" TargetType="Button" BasedOn="{StaticResource StylButtonBase}">
+                <Setter Property="BackgroundColor" Value="Blue"/>
+            </Style>
+
+            <!--Using Specific Object For Styles By Classes and can apply multi style-->
+            <Style TargetType="BoxView" Class="RoundedBox">
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+
+            <Style TargetType="BoxView" Class="SilverBGBox">
+                <Setter Property="BackgroundColor" Value="Silver"/>
+            </Style>
+
+
+            <!--Using Dynamic Styles-->
+            <Style x:Key="LightStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="White "/>
+            </Style>
+
+            <Style x:Key="DarkStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="DarkGray"/>
+            </Style>
+
+            <!--Using Device Built-in Style-->
+
+
+            <!--Using Triggers-->
+            <Style x:Key="whiteEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Gray"/>
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="BackgroundColor" Value="Orange"/>
+                        <Setter Property="TextColor" Value="Black"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Welcome"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+                
+
+            <Label Text="Xamarin.Forms!"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   TextColor="{StaticResource  orangeColor }"
+                   FontSize="{StaticResource FontSize30}"
+                   />
+            
+            <Entry Placeholder="Enter You Name" 
+                   VerticalOptions="Start"
+                   Style="{StaticResource EntryCanCascadeStyle}"/>
+
+            <Button Text="Click Me"
+                    Style="{StaticResource GrayButtonStyle}" 
+                    />
+
+            <BoxView StyleClass="SilverBGBox,RoundedBox"/>
+
+            <Button x:Name="BtnHardCodeStyle"
+                    Text="HardCode Style"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="BtnLightMode"
+                        Text="LIGHT Mode" 
+                        Clicked="BtnLightMode_OnClicked"
+                        HorizontalOptions="CenterAndExpand"/>
+
+                <Button x:Name="BtnDarkMode" 
+                        Text="Dark Mode" 
+                        Clicked="BtnDarkMode_OnClicked"
+                        HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+            <Label Text="Device Styles"/>
+            <Label Text="TitleStyle" Style="{DynamicResource TitleStyle}" />
+            <Label Text="SubtitleStyle" Style="{DynamicResource SubtitleStyle}" />
+            <Label Text="CaptionStyle" Style="{DynamicResource CaptionStyle}" />
+            <Label Text="BodyStyle" Style="{DynamicResource BodyStyle}" />
+            <Label Text="ListItemTextStyle" Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="ListItemDetailTextStyle" Style="{DynamicResource ListItemDetailTextStyle}" />
+
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

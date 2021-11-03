@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.FlexLayoutPage">
+    <FlexLayout Direction="Column">
+
+        <Label Text="First Label" BackgroundColor="Red"/>
+
+        <FlexLayout FlexLayout.Grow="1">
+            <Label Text="Second Label" BackgroundColor="orange"/>
+            <BoxView BackgroundColor="Yellow" FlexLayout.Grow="1"/>
+            <BoxView BackgroundColor="Brown" FlexLayout.Grow="5"/>
+            <BoxView BackgroundColor="Green" FlexLayout.Order="1"/>
+            <BoxView BackgroundColor="Purple" FlexLayout.Shrink="0"/>
+        </FlexLayout>
+
+    </FlexLayout>
+</ContentPage>

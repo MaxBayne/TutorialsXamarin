@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.NavigationsPage"
+             Title="Navigation Page">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Chrome" IconImageSource="Chrome.png" Order="Primary" />
+        <ToolbarItem Text="iTunes" IconImageSource="iTunes.png" Order="Secondary" />
+        <ToolbarItem Text="Twitter" IconImageSource="Twitter.png" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="This is Home Navigation Page" HorizontalOptions="CenterAndExpand" />
+            
+            <Button x:Name="btn_GoToFirst" Text="Navigate To FirstPage" Clicked="btn_GoToFirst_Clicked" />
+            <Button x:Name="btn_GoToSecond" Text="Navigate To Second Page" Clicked="btn_GoToSecond_Clicked" />
+
+            <Button x:Name="btn_GoToFirstWithPassingDataThrowConstructor" Text="Navigate To FirstPage With Passing Data With Constructor" Clicked="btn_GoToFirstWithPassingDataThrowConstructor_Clicked" />
+            <Button x:Name="btn_GoToFirstWithPassingDataThrowBindingContext" Text="Navigate To FirstPage With Passing Data With BindingContext" Clicked="btn_GoToFirstWithPassingDataThrowBindingContext_Clicked" />
+
+            <Button x:Name="btn_OpenModalPage" Text="Open Modal Page" Clicked="btn_OpenModalPage_Clicked" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

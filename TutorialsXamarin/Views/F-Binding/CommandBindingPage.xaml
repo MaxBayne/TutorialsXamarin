@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.CommandBindingPage"
+             Title="Commands Binding">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="First Name" Text="{Binding FirstName}"/>
+            <Entry Placeholder="Last Name" Text="{Binding LastName}"/>
+            <Label Text="{Binding FullName}"/>
+            <Button Text="Get FullName" Command="{Binding GetFullNameCommand}"/>
+            <Button Text="Clear FullName" Command="{Binding ClearFullNameCommand}"/>
+            <Button Text="Clear All" Command="{Binding ClearAllCommand}"/>
+            <Button Text="Print" Command="{Binding PrintCommand}" CommandParameter="Hello Max Bayne"/>
+            <Button Text="Print FirstName" Command="{Binding PrintCommand}" CommandParameter="{Binding FirstName}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

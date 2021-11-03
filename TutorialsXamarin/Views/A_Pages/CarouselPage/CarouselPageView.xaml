@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:views="clr-namespace:TutorialsXamarin.Views"
+              x:Class="TutorialsXamarin.Views.CarouselPageView"
+              Title="CarouselPage">
+    
+    <ContentPage BackgroundColor="Moccasin">
+        <StackLayout>
+            <Label Text="This is Carousel Page" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage>
+
+    <views:NavigationsPage BackgroundColor="DarkBlue" />
+    <views:CoursesListPage BackgroundColor="Orange"/>
+
+
+</CarouselPage>

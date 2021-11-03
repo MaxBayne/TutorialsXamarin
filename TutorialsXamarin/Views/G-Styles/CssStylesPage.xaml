@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.CssStylesPage"
+             Title="Css Styles">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Stylesheet1.css"></StyleSheet>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Style By Element Name" StyleClass="titleLabel"/>
+            <Label Text="Iam Style By Element Name" />
+
+            <Label Text="Style By Class Name"  StyleClass="titleLabel" />
+            <Label Text="This Styled By Class Name" StyleClass="orangeLabel" />
+
+            <Label Text="Style By Control Name"  StyleClass="titleLabel" />
+            <Label x:Name="LblMessage" Text="This Styled By Control Name" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

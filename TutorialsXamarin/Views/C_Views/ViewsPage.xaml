@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:TutorialsXamarin.ViewsControls;assembly=TutorialsXamarin"
+             x:Class="TutorialsXamarin.Views.ViewsPage"
+             Title="Views">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Label Text="LabelView"  />
+
+                <Label Text="ButtonView"  />
+                <Button Text="Click Me"/>
+
+                <Label Text="EntryView (For Single Line Entry)"  />
+                <Entry Placeholder="Enter Your Name" IsEnabled="True"/>
+
+                <Label Text="EntryView (As Password)"  />
+                <Entry Placeholder="Enter Your Password" IsPassword="True"/>
+
+                <Label Text="EntryView (As Phone No)"  />
+                <Entry Placeholder="Enter Your Phone" Keyboard="Telephone"/>
+
+                <Label Text="EntryView (As Number)"  />
+                <Entry Placeholder="Enter Your Salary" Keyboard="Numeric"/>
+
+                <Label Text="EntryView (As Email)"  />
+                <Entry Placeholder="Enter Your Salary" Keyboard="Email"/>
+
+                <Label Text="EntryView (As Chat)"  />
+                <Entry Placeholder="Enter Your Chat" Keyboard="Chat"/>
+
+                <Label Text="EntryView (As URL)"  />
+                <Entry Placeholder="Enter Your URL" Keyboard="Url"/>
+
+                <Label Text="EntryView (As Search)"  />
+                <Entry Placeholder="Enter Your Search" Keyboard="Plain" ReturnType="Search"/>
+
+                <Label Text="EditorView (For Multi Line Entry)"  />
+                <Editor Placeholder="Enter Your Info" HeightRequest="100" Keyboard="Plain"/>
+
+                <Label Text="SwitchView"  />
+                <Switch IsToggled="False" OnColor="Green" ThumbColor="Orange"/>
+
+                <Label Text="StepperView"  />
+                <StackLayout Orientation="Horizontal">
+                    <Stepper x:Name="myStepper"  Value="0" Minimum="0" Maximum="100" Increment="10"/>
+                    <Label Text="{Binding Source={Reference myStepper},Path='Value'}" VerticalOptions="Center" />
+                </StackLayout>
+
+                <Label Text="SliderView"  />
+                <Slider Minimum="0" Maximum="100" Value="50" ThumbColor="Red" MinimumTrackColor="Green" MaximumTrackColor="Black"/>
+
+                <Label Text="DatePickerView" />
+                <DatePicker TextColor="Red" Date="10/11/2000" MinimumDate="1/1/2000" MaximumDate="12/31/2030" Format="yyyy-MM-dd"/>
+
+                <Label Text="TimePickerView" />
+                <TimePicker TextColor="Gray" Time="11:10:05" Format="hh:mm:ss tt"/>
+
+                <Label Text="PickerView (as DropDownList) " />
+                <Picker Title="Country" SelectedIndex="-1">
+                    <Picker.Items>
+                        <x:String>Egypt</x:String>
+                        <x:String>USA</x:String>
+                        <x:String>KSA</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="CheckBoxView" />
+                <CheckBox Color="Green" IsChecked="True"/>
+
+                <Label Text="BoxView (For Colors Rect)"  />
+                <BoxView BackgroundColor="Gray"
+                     HeightRequest="5" 
+                     WidthRequest="200" 
+                     HorizontalOptions="Center"
+                     VerticalOptions="FillAndExpand"/>
+
+                <Label Text="FrameView (For Border Shapes)"  />
+                <Frame BackgroundColor="Orange" 
+                   BorderColor="Red" CornerRadius="15" 
+                   Margin="10" 
+                   HasShadow="True" 
+                   WidthRequest="250"
+                   HorizontalOptions="Center">
+
+                    <Label HorizontalTextAlignment="Center"  Text="This is Frame View as Single Layout"/>
+
+                </Frame>
+
+                <Label Text="DisplayAlert (as MessageBox)"  />
+                <Button x:Name="btn_DisplayAlert" Text="Display Alert" Clicked="btn_DisplayAlert_Clicked" />
+
+                <Label Text="DisplayAlert (as ConfirmBox)"  />
+                <Button x:Name="btn_DisplayAlertAsConfirm" Text="Confirm Alert" Clicked="btn_DisplayAlertAsConfirm_Clicked" />
+
+                <Label Text="DisplayActionSheet (as Select Box)"  />
+                <Button x:Name="btn_DisplayActionSheet" Text="Display ActionSheet" Clicked="btn_DisplayActionSheet_Clicked" />
+
+                <Label Text="DisplayPrompt (as Input Box)"  />
+                <Button x:Name="btn_DisplayPrompt" Text="Display Prompt" Clicked="btn_DisplayPrompt_Clicked" />
+
+                <Label Text="ActivityIndicator"  />
+                <ActivityIndicator IsRunning="True"/>
+
+                <Label Text="ImageView (File)"  />
+                <Image Source="coke.jpg" IsVisible="false"/>
+
+                <Label Text="ImageView (URL)"  />
+                <!--<Image x:Name="img_uri" HeightRequest="200" Source="http://www.google.com/image.png" />-->
+                <Image x:Name="img_uri" IsVisible="false"/>
+
+                <Label Text="ImageView (Resource)"  />
+                <Image  x:Name="img_Resource" HeightRequest="200" IsVisible="false"/>
+
+                <Label Text="ListView"  />
+                <Button x:Name="btn_ListView" Text="ListView" Clicked="btn_ListView_Clicked"/>
+
+                <Label Text="ListView Courses"  />
+                <Button x:Name="btn_ListViewCourses" Text="ListView With Groups" Clicked="btn_ListViewCourses_Clicked"/>
+
+                <Label Text="CollectionView"  />
+                <Button x:Name="btn_CollectionView" Text="CollectionView" Clicked="btn_CollectionView_Clicked"/>
+
+                <Label Text="TableView"  />
+                <Button x:Name="BtnTableView" Text="TableView" Clicked="BtnTableView_OnClicked"/>
+
+
+                <Label Text="ContentView (Custom Controls)"  />
+                <controls:MessageView  Message="Hii Iam Max " />
+                
+
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

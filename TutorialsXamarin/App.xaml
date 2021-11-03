@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.App">
+    <Application.Resources>
+
+            <!--
+            You Can Define Styles in Three Level
+            1-Control Level inside Resources Section like <Label.Resources>
+            2-Page Level inside Resources Section like <ContentPage.Resources>
+            3-App Level inside App.xaml
+            --> 
+
+        
+            <!--Xaml Styles-->
+            <ResourceDictionary>
+
+            <!--Split Resources To Files-->
+            <ResourceDictionary.MergedDictionaries>
+
+
+                <!--
+                <ResourceDictionary Source="Resources/ColorsDictionary.xaml"/>
+                <ResourceDictionary Source="Resources/StylesDictionary.xaml"/>
+                -->
+
+                <!--OR-->
+
+                <!--
+                <Dictionary:ColorsDictionary/>
+                <Dictionary:StylesDictionary/>
+                -->
+
+                <!--OR-->
+
+                <!--Colors Resources-->
+                <ResourceDictionary>
+                    <Color x:Key="GreenColor">Green</Color>
+                </ResourceDictionary>
+
+                <!--Styles Resources-->
+                <ResourceDictionary>
+                    <Style x:Key="grayButtonStyle" TargetType="Button">
+                        <Setter Property="BackgroundColor" Value="Gray"/>
+                        <Setter Property="TextColor" Value="White"/>
+                    </Style>
+                </ResourceDictionary>
+
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+
+            <!--Css Styles-->
+            <StyleSheet Source="/Resources/Stylesheet1.css"></StyleSheet>
+
+    </Application.Resources>
+</Application>

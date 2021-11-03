@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.DataBindingPage">
+    
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+            <!--<model:Pie x:Key="ApplePie" Id="100" Name="Apple Pie" Price="25.20"/>-->
+        </ResourceDictionary>
+        
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout x:Name="StackFormData">
+
+            <!--This binding Make By XAML =============================================== -->
+
+            <Label Text="Name"/>
+            <!--<Entry Placeholder="Enter Pie Name" Text="{Binding Source={StaticResource ApplePie},Path='Name'}"/>-->
+            <Entry x:Name="TxtName" Placeholder="Enter Pie Name" Text="{Binding Name}"/>
+
+            <Label Text="Price"/>
+            <!--<Entry Placeholder="Enter Pie Price" Text="{Binding Source={StaticResource ApplePie},Path='Price'}"/>-->
+            <Entry x:Name="TxtPrice" Placeholder="Enter Pie Price" Text="{Binding Price}"/>
+
+
+            <!--This binding Make By Code =============================================== -->
+            <Label Text="Description"/>
+            <Entry x:Name="TxtDescription" Placeholder="Description" />
+
+           
+           
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

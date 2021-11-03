@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.Bindings"
+             Title="Bindings">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button ClassId="BindingModes" Text="Binding Modes"  Clicked="Button_OnClicked"/>
+            <Button ClassId="DataBinding" Text="Data Binding"  Clicked="Button_OnClicked"/>
+            <Button ClassId="ViewBinding" Text="View Binding"  Clicked="Button_OnClicked"/>
+            <Button ClassId="CommandBinding" Text="Command Binding"  Clicked="Button_OnClicked"/>
+            <Button ClassId="ObservableBinding" Text="Observable Binding"  Clicked="Button_OnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

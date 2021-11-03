@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Resources.StylesDictionary">
+
+    <!--Using TargetType For Styles-->
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Orange"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="BorderRadius" Value="10"/>
+        <Setter Property="Margin" Value="10"/>
+
+    </Style>
+
+    <!--Using Keys For Styles-->
+    <Style x:Key="styl_Button_Base" TargetType="Button">
+        <Setter Property="TextColor" Value="White"/>
+    </Style>
+
+    <!--Using Inheritance Styles-->
+    <Style x:Key="grayButtonStyle" TargetType="Button" BasedOn="{StaticResource styl_Button_Base}">
+        <Setter Property="BackgroundColor" Value="Gray"/>
+    </Style>
+
+    <Style x:Key="redButtonStyle" TargetType="Button" BasedOn="{StaticResource styl_Button_Base}">
+        <Setter Property="BackgroundColor" Value="Red"/>
+    </Style>
+
+    <Style x:Key="blueButtonStyle" TargetType="Button" BasedOn="{StaticResource styl_Button_Base}">
+        <Setter Property="BackgroundColor" Value="Blue"/>
+    </Style>
+
+    <!--Using Classes For Styles-->
+    <Style TargetType="BoxView" Class="RoundedBox">
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+
+    <Style TargetType="BoxView" Class="SilverBGBox">
+        <Setter Property="BackgroundColor" Value="Silver"/>
+    </Style>
+
+
+
+    <!--Using Triggers-->
+    <Style x:Key="whiteEntryStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="Gray"/>
+        <Style.Triggers>
+            <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                <Setter Property="BackgroundColor" Value="Orange"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.DeviceSensorsPage"
+             Title="Device Sensors">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="LblCompass" Text="Compass"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start Compass" Clicked="StartCompass_OnClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="End Compass" Clicked="EndCompass_OnClicked"  HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Label x:Name="LblBarometer" Text="Barometer"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start Barometer" Clicked="StartBarometer_OnClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="End Barometer" Clicked="EndBarometer_OnClicked"  HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Label x:Name="LblMagnetometer" Text="Magnetometer"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start Magnetometer" Clicked="StartMagnetometer_OnClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="End Magnetometer" Clicked="EndMagnetometer_OnClicked"  HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Label x:Name="LblAccelerometer" Text="Accelerometer"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start Accelerometer" Clicked="StartAccelerometer_OnClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="End Accelerometer" Clicked="EndAccelerometer_OnClicked"  HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Label x:Name="LblGyroscope" Text="Gyroscope"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start Gyroscope" Clicked="StartGyroscope_OnClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="End Gyroscope" Clicked="EndGyroscope_OnClicked"  HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Label x:Name="LblOrientation" Text="Orientation"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Start Orientation" Clicked="StartOrientationSensor_OnClicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="End Orientation" Clicked="EndOrientationSensor_OnClicked"  HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+</StackLayout>
+    </ContentPage.Content>
+</ContentPage> 

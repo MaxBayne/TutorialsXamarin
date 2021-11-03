@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:TutorialsXamarin.Views"
+            x:Class="TutorialsXamarin.Views.TabbedPageView"
+           
+            
+            >
+
+    <!--BarBackgroundColor="Gray"
+            BarTextColor="Red"
+            SelectedTabColor="Red"-->
+
+    <!--Pages can be added as references or inline-->
+
+    <!--
+    
+    <ContentPage Title="Tab1">
+        <StackLayout>
+            <Label Text="This is Tab1 Page"/>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Tab2">
+        <StackLayout>
+            <Label Text="This is Tab2 Page"/>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Tab3">
+        <StackLayout>
+            <Label Text="This is Tab3 Page"/>
+        </StackLayout>
+    </ContentPage>
+    
+    -->
+
+    <!--
+    <ContentPage Title="Tab 1" />
+    <ContentPage Title="Tab 2" />
+    <ContentPage Title="Tab 3" />
+    -->
+    
+    <!--OR-->
+
+    <!--
+    <views:ContentPageByXAML></views:ContentPageByXAML>
+    <views:CoursesListPage></views:CoursesListPage>
+    <views:NavigationsPage></views:NavigationsPage>
+    <views:TableViewPage></views:TableViewPage>
+    -->
+    
+    <!--OR-->
+    
+    
+    <NavigationPage Title="ContentPage">
+        <x:Arguments>
+            <views:ContentPageByXAML NavigationPage.HasNavigationBar="False" />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="ListViewPage">
+        <x:Arguments>
+            <views:CoursesListPage NavigationPage.HasNavigationBar="False" />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="StaticResource">
+        <x:Arguments>
+            <views:StaticResourcesPage   NavigationPage.HasNavigationBar="False"/>
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="CarouselPage">
+        <x:Arguments>
+            <views:CarouselPageView  NavigationPage.HasNavigationBar="False"/>
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="CssStyles">
+        <x:Arguments>
+            <views:CssStylesPage  NavigationPage.HasNavigationBar="False"/>
+        </x:Arguments>
+    </NavigationPage>
+    
+
+
+
+</TabbedPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.IntegrationWithAppsPage"
+             Title="IntegrationWithApps">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Phone Dialer"/>
+                <Button Text="Dial Phone" Clicked="BtnDialPhone_OnClicked"/>
+
+                <Label Text="SMS"/>
+                <Button Text="Send SMS" Clicked="BtnSendSMS_OnClicked"/>
+
+                <Label Text="Email"/>
+                <Button Text="Send Email" Clicked="BtnSendEmail_OnClicked"/>
+
+                <Label Text="Maps"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Map Default" HorizontalOptions="FillAndExpand" Clicked="BtnOpenMapDefault_OnClicked"/>
+                    <Button Text="Map Driving" HorizontalOptions="FillAndExpand" Clicked="BtnOpenMapDriving_OnClicked"/>
+                    <Button Text="Map Bicycling" HorizontalOptions="FillAndExpand" Clicked="BtnOpenMapBicycling_OnClicked"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Map Walking" HorizontalOptions="FillAndExpand" Clicked="BtnOpenMapWalking_OnClicked"/>
+                    <Button Text="Map Transit" HorizontalOptions="FillAndExpand" Clicked="BtnOpenMapTransit_OnClicked"/>
+                    <Button Text="Map None" HorizontalOptions="FillAndExpand" Clicked="BtnOpenMapNone_OnClicked"/>
+                </StackLayout>
+
+                <Label Text="Browser"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Browser 1" HorizontalOptions="FillAndExpand" Clicked="BtnOpenBrowser1_OnClicked"/>
+                    <Button Text="Browser 2" HorizontalOptions="FillAndExpand" Clicked="BtnOpenBrowser2_OnClicked"/>
+                </StackLayout>
+
+                <Label Text="Launcher"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="App1" HorizontalOptions="FillAndExpand" Clicked="BtnOpenApp1_OnClicked"/>
+                    <Button Text="App2" HorizontalOptions="FillAndExpand" Clicked="BtnOpenApp2_OnClicked"/>
+                </StackLayout>
+
+                <Label Text="Share"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Share Text" HorizontalOptions="FillAndExpand" Clicked="BtnShareText_OnClicked"/>
+                    <Button Text="Share File" HorizontalOptions="FillAndExpand" Clicked="BtnShareFile_OnClicked"/>
+                </StackLayout>
+
+                <Label Text="Clipboard"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Copy Text" HorizontalOptions="FillAndExpand" Clicked="BtnCopyText_OnClicked"/>
+                    <Button Text="Past Text" HorizontalOptions="FillAndExpand" Clicked="BtnPastText_OnClicked"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

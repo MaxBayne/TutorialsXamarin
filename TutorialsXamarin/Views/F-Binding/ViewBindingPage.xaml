@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.ViewBindingPage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <!--Define the Source of Binding-->
+            <Entry x:Name="TxtFirstName" Placeholder="Enter First Name" Text="{Binding Name}"/>
+            
+            <!--Define the Target of Binding with BindingContext and Path-->
+            <Label BindingContext="{Reference TxtFirstName}" Text="{Binding Path='Text'}"/>
+            
+            <!--Define the Target of Binding with Source and Path-->
+            <Label Text="{Binding Source={Reference TxtFirstName}, Path='Text'}"/>
+
+            <!--Define the Target of Binding with Source and Path ,StringFormat-->
+            <Label Text="{Binding Source={Reference TxtFirstName}, Path='Text',StringFormat='Welcome {0} , how are you'}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

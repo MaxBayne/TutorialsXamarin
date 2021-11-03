@@ -1,0 +1,32 @@
+﻿/*mean its apply for contentpage base class and its all derived classes (Apply To Drived Types)*/
+^contentpage 
+{
+    background-color: whitesmoke;
+}
+
+
+
+#LblMessage 
+{
+    color: blue;
+    font-size: 14;
+}
+
+
+.orangeLabel {
+    color: orange;
+    text-decoration-line: underline;
+}
+
+
+.titleLabel {
+    color: gray;
+    text-decoration-line: underline;
+}
+
+/*label 
+{
+    color: red;
+    font-size: large;
+
+}*/

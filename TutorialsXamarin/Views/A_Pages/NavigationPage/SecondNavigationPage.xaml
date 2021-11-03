@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.SecondNavigationPage"
+             Title="Second Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Second Navigation Page" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="btn_GoToPrevious" Text="Go To Previous NavigationPage" Clicked="btn_GoToPrevious_Clicked" />
+            <Button x:Name="btn_GoToHome" Text="Go To Home NavigationPage" Clicked="btn_GoToHome_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

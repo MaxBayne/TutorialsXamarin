@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TutorialsXamarin.Common.Models;assembly=TutorialsXamarin.Common"
+             x:Class="TutorialsXamarin.Views.ListViewCoursesPage"
+             Title="ListView With Groups">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="LvCourses"
+                      IsGroupingEnabled="True"
+                      IsPullToRefreshEnabled="True"
+                      GroupDisplayBinding="{Binding GroupName}"
+                      GroupShortNameBinding="{Binding GroupShortName}"
+                      Header="Header"
+                      Footer="Footer"
+                      ItemSelected="LvCourses_OnItemSelected"
+                      ItemTapped="LvCourses_OnItemTapped"
+                      Refreshing="LvCourses_OnRefreshing"
+                      >
+
+                <!--Header Template Of ListView-->
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Label Text="List Of Courses"
+                               TextColor="Green" 
+                               BackgroundColor="Orange"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               HeightRequest="50"/>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+
+                <!--Header Of Group Template of ListView-->
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding GroupName}" 
+                                  TextColor="Blue"/>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+
+                <!--Item Template-->
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Course">
+                        <ViewCell>
+                            
+                            <!--To See Context Actions Menus Hold Tab on Android , Left Swap On IOS-->
+                            <ViewCell.ContextActions>
+
+                                <MenuItem Text="View" />
+                                <MenuItem Text="Edit"/>
+                                <MenuItem Text="Delete"/>
+                                <MenuItem Text="Select"/>
+                                <MenuItem Text="Add"/>
+                                <MenuItem Text="Query"/>
+                                <MenuItem Text="Search"/>
+                                <MenuItem Text="Find"/>
+
+                            </ViewCell.ContextActions>
+
+                            <StackLayout>
+                                <Label Text="{Binding Title}"/>
+                                <Label Text="{Binding Description}"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <!--<TextCell Text="{Binding Title}" Detail="{Binding Description}"/>-->
+                        <!--
+                        <EntryCell/>
+                        <ImageCell/>
+                        <SwitchCell/>
+                        <ViewCell/>
+                        -->
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <!--Footer Template of ListView-->
+                <ListView.FooterTemplate>
+                    <DataTemplate>
+                        <Label Text="All Copyrights @ Reserved" 
+                               TextColor="Orange" 
+                               HorizontalOptions="Center"/>
+                    </DataTemplate>
+                </ListView.FooterTemplate>
+            </ListView> 
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

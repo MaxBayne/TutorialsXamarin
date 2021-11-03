@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.DeviceStoragePage"
+             Title="Device Storage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Preferences (For General Settings, its Not Secured)" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" HorizontalOptions="FillAndExpand" Clicked="BtnSavePreferences_OnClicked" />
+                <Button Text="Read" HorizontalOptions="FillAndExpand" Clicked="BtnReadPreferences_OnClicked" />
+                <Button Text="Clear" HorizontalOptions="FillAndExpand" Clicked="BtnClearPreferences_OnClicked" />
+                <Button Text="Remove" HorizontalOptions="FillAndExpand" Clicked="BtnRemovePreferences_OnClicked" />
+            </StackLayout>
+
+            <Label Text="Secure Storage (For Settings Like Passwords , its Secured)" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" HorizontalOptions="FillAndExpand" Clicked="BtnSaveSecureStorage_OnClicked" />
+                <Button Text="Read" HorizontalOptions="FillAndExpand" Clicked="BtnReadSecureStorage_OnClicked" />
+                <Button Text="Clear" HorizontalOptions="FillAndExpand" Clicked="BtnClearSecureStorage_OnClicked" />
+                <Button Text="Remove" HorizontalOptions="FillAndExpand" Clicked="BtnRemoveSecureStorage_OnClicked" />
+            </StackLayout>
+
+            <Label Text="FileSystem" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cached File" HorizontalOptions="FillAndExpand" Clicked="BtnCachedDirectory_OnClicked" />
+                <Button Text="Data File" HorizontalOptions="FillAndExpand" Clicked="BtnDataDirectory_OnClicked" />
+                <Button Text="Assets File" HorizontalOptions="FillAndExpand" Clicked="BtnPackageDirectory_OnClicked" />
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

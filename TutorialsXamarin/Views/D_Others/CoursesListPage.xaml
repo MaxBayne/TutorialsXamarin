@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.CoursesListPage"
+             xmlns:vm="clr-namespace:TutorialsXamarin.ViewModels"
+             xmlns:local="clr-namespace:TutorialsXamarin.Views"
+             Title="Courses List">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="OrangeColor">Orange</Color>
+            <Style x:Key="styleHeader" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="Gray"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Large"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddCoursePageCommand}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <Label Text="ListView With TextCell" Style="{StaticResource styleHeader}"/>
+                <ListView x:Name="lsv_Courses_With_TextCell" 
+                      ItemsSource="{Binding Courses,Mode=TwoWay}" 
+                      CachingStrategy="RecycleElement"
+                      SelectedItem="{Binding SelectedCourse}" 
+                      RefreshCommand="{Binding FillCoursesCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RowHeight="50" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Title}" Detail="{Binding Description}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="ListView With ImageCell" Style="{StaticResource styleHeader}"/>
+                <ListView x:Name="lsv_Courses_With_ImageCell" 
+                      ItemsSource="{Binding Courses,Mode=TwoWay}" 
+                      CachingStrategy="RecycleElement"
+                      SelectedItem="{Binding SelectedCourse}" 
+                      RefreshCommand="{Binding FillCoursesCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RowHeight="50" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageCell Text="{Binding Title}" Detail="{Binding Description}" ImageSource="{Binding Image}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="ListView With EntryCell" Style="{StaticResource styleHeader}"/>
+                <ListView x:Name="lsv_Courses_With_EntryCell" 
+                      ItemsSource="{Binding Courses,Mode=TwoWay}" 
+                      CachingStrategy="RecycleElement"
+                      SelectedItem="{Binding SelectedCourse}" 
+                      RefreshCommand="{Binding FillCoursesCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RowHeight="50" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <EntryCell Label="{Binding Title}" Text="{Binding Description}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="ListView With SwitchCell" Style="{StaticResource styleHeader}"/>
+                <ListView x:Name="lsv_Courses_With_SwitchCell" 
+                      ItemsSource="{Binding Courses,Mode=TwoWay}" 
+                      CachingStrategy="RecycleElement"
+                      SelectedItem="{Binding SelectedCourse}" 
+                      RefreshCommand="{Binding FillCoursesCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RowHeight="50" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <SwitchCell Text="{Binding Title}" On="True"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="ListView With ViewCell" Style="{StaticResource styleHeader}"/>
+                <ListView x:Name="lsv_Courses_With_ViewCell" 
+                      ItemsSource="{Binding Courses,Mode=TwoWay}" 
+                      CachingStrategy="RecycleElement"
+                      SelectedItem="{Binding SelectedCourse}" 
+                      ItemTapped="lsv_Courses_ItemTapped"
+                      RefreshCommand="{Binding FillCoursesCommand}"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RowHeight="50" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+
+
+
+                                    <Label Text="{Binding Title}" TextColor="{StaticResource OrangeColor}" Grid.Row="0" Grid.Column="0">
+                                        <Label.FontSize>14</Label.FontSize>
+                                    </Label>
+                                    <Label Text="{Binding Price}" FontSize="Medium" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding Description}" FontSize="Subtitle"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray"/>
+
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

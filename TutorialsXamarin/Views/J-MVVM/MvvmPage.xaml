@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TutorialsXamarin.ViewModels;assembly=TutorialsXamarin"
+             x:Class="TutorialsXamarin.Views.MvvmPage"
+             Title="Customers List">
+
+    <!--Not Recommended-->
+    <!--<ContentPage.BindingContext>
+        <viewModels:MvvmViewModel/>
+    </ContentPage.BindingContext>-->
+
+    <ContentPage.Content>
+
+
+        <StackLayout>
+
+            <RefreshView x:Name="RvRefreshCollection">
+                         <!--Refreshing="rv_RefreshCollection_Refreshing"-->
+
+                <CollectionView x:Name="CvCourses" 
+                                SelectionMode="Single"
+                                IsGrouped="False"
+                                ItemsSource="{Binding Customers}"
+                                SelectionChangedCommand="{Binding SelectionChangedCommand}"
+                                SelectionChangedCommandParameter="{Binding SelectionChangedCommandParameter}">
+                                <!--SelectionChanged="CVCourses_SelectionChanged"-->
+
+
+                    <!--Set Layouts Type Linear or Grid-->
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"  ItemSpacing="5"  />
+                        <!--<GridItemsLayout Orientation="Horizontal" HorizontalItemSpacing="5" VerticalItemSpacing="5"  />-->
+                    </CollectionView.ItemsLayout>
+
+                    <!--Set Message For Empty Collection Data-->
+                    <CollectionView.EmptyView>
+                        <Label Text="Sorry , No Results"
+                               TextColor="Silver"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               />
+                    </CollectionView.EmptyView>
+
+                    <!--Item Template for Item inside Collection-->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+
+                                    <!--Options Remain Open After Swipe Gesture-->
+                                    <SwipeItems Mode="Reveal">
+
+                                        <SwipeItem Text="Call" 
+                                                   BackgroundColor="Green"/>
+
+                                        <SwipeItem x:Name="CmdDisplayInfo"
+                                                   Text="Info"
+                                                   BackgroundColor="SkyBlue"
+                                                   CommandParameter="{Binding FirstName}"/>
+                                        <!--Clicked="CmdDisplayInfo_OnClicked"-->
+
+                                    </SwipeItems>
+
+                                </SwipeView.LeftItems>
+
+                                <SwipeView.RightItems>
+
+                                    <!--Execute Command after Swipe Gesture-->
+                                    <SwipeItems Mode="Execute">
+                                        <SwipeItem x:Name="CmdRemoveItem"
+                                                   Text="Remove"
+                                                   BackgroundColor="Red"
+                                                   Command="{Binding RemoveCustomerCommand}"
+                                                   CommandParameter="{Binding SelectedCustomer }"
+                                                   />
+                                        <!--CommandParameter="{Binding Code}"-->
+                                        <!--Clicked="Cmd_RemoveItem_OnClicked"-->
+                                    </SwipeItems>
+
+                                </SwipeView.RightItems>
+
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Source="{Binding Image}" 
+                                           HorizontalOptions="Center" 
+                                           Grid.Row="0" 
+                                           Grid.Column="0"
+                                           Grid.RowSpan="2"/>
+
+                                    <Label Text="{Binding FirstName}" 
+                                           Grid.Row="0" 
+                                           Grid.Column="1" 
+                                           TextColor="Black" />
+
+                                    <Label Text="{Binding LastName}" 
+                                           Grid.Row="1"
+                                           Grid.Column="1"
+                                           TextColor="Gray" />
+
+                                    <Label Text="{Binding DateOfBirth,StringFormat='{0:dd-MM-yyyy}'}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center" 
+                                           Grid.Row="0" 
+                                           Grid.Column="2" 
+                                           Grid.RowSpan="2"
+                                           Padding="10,0"/>
+                                </Grid>
+                            </SwipeView>
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </RefreshView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

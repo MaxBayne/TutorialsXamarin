@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.RelativeLayout1">
+    <ContentPage.Content>
+
+        <RelativeLayout>
+
+            <!--# /////////// Postion Relative //////////// #-->
+            
+            <!--Postion Relative Control To Fixed Value-->
+            <BoxView x:Name="bv_Green" BackgroundColor="Green" 
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=Constant,Constant=200}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=Constant,Constant=200}"/>
+
+            <!--Postion Relative Control To Parent as Percent -->
+            <BoxView x:Name="bv_Red" BackgroundColor="Red" 
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.5}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.5}"/>
+
+            <!--Postion Relative Control To View as Percent-->
+            <BoxView x:Name="bv_Gray" BackgroundColor="Gray" 
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,ElementName=bv_Red, Property=X,Factor=0.5}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,ElementName=bv_Red, Property=Y,Factor=0.5}" />
+
+            <!--# /////////// Size Relative //////////// #-->
+
+            <!--Size Relative Control To Fixed Value-->
+            <BoxView x:Name="bv_Purple" BackgroundColor="Purple" 
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant,Constant=100}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant,Constant=100}"/>
+
+            <!--Size Relative Control To Parent as Percent -->
+            <BoxView BackgroundColor="Brown" 
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0.1}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0.1}"/>
+
+            <!--Size Relative Control To View as Percent-->
+            <BoxView BackgroundColor="Black" 
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView,ElementName=bv_Purple, Property=Width,Factor=0.5}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView,ElementName=bv_Purple, Property=Height,Factor=0.5}" />
+
+
+        </RelativeLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

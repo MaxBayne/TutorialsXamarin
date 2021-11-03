@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.Resources"
+             Title="Resources">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button ClassId="StaticResources" Text="Static Resources"  Clicked="Button_OnClicked"/>
+            <Button ClassId="DynamicResources" Text="Dynamic Resources"  Clicked="Button_OnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.TableViewPage"
+             Title="TableView">
+    <ContentPage.Content>
+
+        <TableView Intent="Settings">
+            <TableRoot>
+
+                <TableSection Title="App Settings">
+                    <SwitchCell Text="AutoBackup" On="True"/>
+                    <SwitchCell Text="AutoLogOut" On="False"/>
+                </TableSection>
+
+                <TableSection Title="NeWorking Settings">
+                    <SwitchCell Text="Use GPS"/>
+                    <SwitchCell Text="Use 4G"/>
+                </TableSection>
+
+                <TableSection Title="Personal Info">
+                    <ImageCell ImageSource="Twitter.png" Text="Mohammed Salah" Detail="Application Developer"/>
+                    <EntryCell Placeholder="Enter Your First Name" Keyboard="Text"/>
+                    <EntryCell Placeholder="Enter Your Last Name" Keyboard="Text"/>
+                    <EntryCell Placeholder="Enter Your Email" Keyboard="Email"/>
+                    <EntryCell Placeholder="Enter Your Mobile" Keyboard="Telephone"/>
+                </TableSection>
+
+                <TableSection Title="Prefered Language">
+                    <TextCell Text="C#" Detail="C# Programming Language"/>
+                    <TextCell Text="C++" Detail="C++ Programming Language"/>
+                </TableSection>
+
+                <TableSection Title="other">
+                    <ViewCell>
+                        <StackLayout>
+                            <Entry Placeholder="Enter Your WebSite" Keyboard="Url"/>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+
+            </TableRoot>
+        </TableView>
+
+    </ContentPage.Content>
+
+</ContentPage>

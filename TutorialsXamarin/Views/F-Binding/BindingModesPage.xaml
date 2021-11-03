@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.BindingModesPage"
+             Title="Binding Modes">
+   
+        <ScrollView>
+            <StackLayout>
+                <!--OneTime Binding Mean only when bind to target control -->
+                <StackLayout>
+                    <Label Text="OneTime Binding"/>
+                    <Entry x:Name="TxtOneTimeSource" Text="Hello World"/>
+                    <Entry x:Name="TxtOneTimeTarget" Text="{Binding Mode=OneTime,Source={x:Reference TxtOneTimeSource},Path='Text'}"/>
+                </StackLayout>
+
+                <!--OneWay Binding mean when Source Changed by fire  INotifyChanged Event then Target will be Updated -->
+                <StackLayout>
+                    <Label Text="OneWay Binding"/>
+                    <Entry x:Name="TxtOneWaySource" Placeholder="OneWay Source"/>
+                    <Entry x:Name="TxtOneWayTarget" Placeholder="OneWay Target" Text="{Binding Mode=OneWay,Source={x:Reference TxtOneWaySource},Path='Text'}"/>
+                </StackLayout>
+
+                <!--OneWayToSource Binding mean when Target Changed then Source will be Updated -->
+                <StackLayout>
+                    <Label Text="OneWayToSource Binding"/>
+                    <Entry x:Name="TxtOneWayToSourceSource" Placeholder="OneWayToSource Source"/>
+                    <Entry x:Name="TxtOneWayToSourceTarget" Placeholder="OneWayToSource Target" Text="{Binding Mode=OneWayToSource,Source={x:Reference TxtOneWayToSourceSource},Path='Text'}"/>
+                </StackLayout>
+
+                <!--TwoWay Binding mean when Source or Target Changed then Update Together Updated -->
+                <StackLayout>
+                    <Label Text="TwoWay Binding"/>
+                    <Entry x:Name="TxtTwoWaySource" Placeholder="TwoWay Source"/>
+                    <Entry x:Name="TxtTwoWayTarget" Placeholder="TwoWay Target" Text="{Binding Mode=TwoWay,Source={x:Reference TxtTwoWaySource},Path='Text'}"/>
+                </StackLayout>
+                
+            </StackLayout>
+            
+        </ScrollView>
+    
+</ContentPage>

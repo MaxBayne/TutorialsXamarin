@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.DevicePlaforrm">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="DeviceType"/>
+            <Label Text="{OnIdiom 'Device',Phone='Its Phone',Tablet='its Tablet',Desktop='its Desktop'}"/>
+
+            <Label Text="DeviceSystem"/>
+            <Label Text="{OnPlatform 'Platform',Android='its Android',iOS='its ios',Tizen='its tizen for samsung',UWP='its uwp'}"/>
+
+            <Label x:Name="lbl_Title"
+                   Text="Hello World"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand">
+
+                <!--Control By Device System-->
+                <Label.BackgroundColor>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="Android" Value="Red" />
+                        <On Platform="UWP" Value="silver" />
+                    </OnPlatform>
+                </Label.BackgroundColor>
+                
+                
+
+                <!--Control By Device Type-->
+                <Label.TextColor>
+                    <OnIdiom x:TypeArguments="Color">
+                        <OnIdiom.Phone>orange</OnIdiom.Phone>
+                        <OnIdiom.Tablet>Black</OnIdiom.Tablet>
+                        <OnIdiom.Desktop>blue</OnIdiom.Desktop>
+                    </OnIdiom>
+                </Label.TextColor>
+                
+            </Label>
+
+            <Label x:Name="lbl_Timer" Text="0"/>
+            <Button x:Name="btn_StartTimer" Text="Start Timer" Clicked="btn_StartTimer_Clicked"/>
+            <Button x:Name="btn_StopTimer" Text="Stop Timer" Clicked="btn_StopTimer_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

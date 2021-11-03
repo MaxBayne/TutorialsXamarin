@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.PagesTypes"
+             Title="Pages">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button ClassId="ContentByXaml" Text="Content Page (Xaml)"  Clicked="Button_OnClicked" />
+            <Button ClassId="ContentByCode" Text="Content Page (Code)"  Clicked="Button_OnClicked" />
+            <Button ClassId="Carousel" Text="Carousel Page"  Clicked="Button_OnClicked"/>
+            <Button ClassId="Flyout" Text="Flyout Page"  Clicked="Button_OnClicked"/>
+            <Button ClassId="Full" Text="Full Page"  Clicked="Button_OnClicked"/>
+            <Button ClassId="Tabbed" Text="Tabbed Page"  Clicked="Button_OnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

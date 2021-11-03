@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TutorialsXamarin.ViewModels"
+             x:Class="TutorialsXamarin.Views.FirstNavigationPage"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.BackButtonTitle="Ok Man"
+             NavigationPage.IconColor="Silver"
+             NavigationPage.TitleIconImageSource="iTunes.png"
+             Title="First Page"
+             >
+    <!--Title="First Page"-->
+
+    <ContentPage.BindingContext>
+        <viewModels:FirstPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to First Navigation Page" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+            <Entry x:Name="txt_Data"/>
+            <Entry x:Name="txt_Message" Text="{Binding Message}"/>
+            
+
+            <Button x:Name="btn_GoToPrevious" Text="Go To Previous NavigationPage" Clicked="btn_GoToPrevious_Clicked" />
+            <Button x:Name="btn_GoToHome" Text="Go To Home NavigationPage" Clicked="btn_GoToHome_Clicked" />
+            <Button x:Name="btn_CloseModal" Text="Close Modal" Clicked="btn_CloseModal_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

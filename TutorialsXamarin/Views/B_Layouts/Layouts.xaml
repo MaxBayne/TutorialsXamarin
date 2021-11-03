@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.Layouts"
+             Title="Layouts">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button ClassId="SingleLayouts" Text="Single Layouts"  Clicked="Button_OnClicked"/>
+            <Button ClassId="MultiLayouts" Text="Multi Layouts"  Clicked="Button_OnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

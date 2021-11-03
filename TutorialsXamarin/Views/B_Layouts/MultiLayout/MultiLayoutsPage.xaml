@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TutorialsXamarin.Views.MultiLayoutsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Button Text="StackLayout" x:Name="btn_StackLayout" Clicked="btn_StackLayout_Clicked" />
+            <Button Text="AbsoluteLayout" x:Name="btn_AbsoluteLayout" Clicked="btn_AbsoluteLayout_Clicked" />
+            <Button Text="RelativeLayout" x:Name="btn_RelativeLayout" Clicked="btn_RelativeLayout_Clicked" />
+            <Button Text="GridLayout" x:Name="btn_GridLayout" Clicked="btn_GridLayout_Clicked" />
+            <Button Text="FlexLayout" x:Name="btn_FlexLayout" Clicked="btn_FlexLayout_Clicked" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

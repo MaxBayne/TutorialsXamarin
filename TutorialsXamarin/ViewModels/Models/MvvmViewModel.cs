@@ -5,24 +5,27 @@ using TutorialsXamarin.Common.Models;
 using TutorialsXamarin.Services;
 using Xamarin.Forms;
 
+// ReSharper disable once CheckNamespace
 namespace TutorialsXamarin.ViewModels
 {
     public class MvvmViewModel:BaseViewModel, IMvvmViewModel
     {
-        private readonly ICustomersService _customersService;
-
         public MvvmViewModel(ICustomersService customersService)
         {
-            _customersService = customersService;
-
             //Initial Properties
-            Customers = new ObservableCollection<Customer>(_customersService.GetCustomersToList());
+            Customers = new ObservableCollection<Customer>(customersService.GetCustomersToList());
 
             //Initial Commands
-            ChangeNameCommand = new Command(OnChangeNameCommand);
+            RefreshListCommand = new Command(OnRefreshListCommand);
+            AddNewCustomerCommand = new Command(OnAddNewCustomerCommand);
             RemoveCustomerCommand = new Command(OnRemoveCustomerCommand);
+
+            ChangeNameCommand = new Command(OnChangeNameCommand);
+            
             SelectionChangedCommand = new Command<Customer>(OnSelectionChangedCommand);
             SelectionChangedCommandParameter = new Command<Customer>(OnSelectionChangedCommandParameter);
+
+            ItemTabbedCommand = new Command<Customer>(OnItemTabbedCommand);
         }
 
         #region Properites
@@ -103,6 +106,18 @@ namespace TutorialsXamarin.ViewModels
 
         #region Commands
 
+        public ICommand AddNewCustomerCommand { get; }
+        private void OnAddNewCustomerCommand()
+        {
+         
+        }
+        
+        public ICommand RefreshListCommand { get; }
+        private void OnRefreshListCommand()
+        {
+
+        }
+
         public ICommand ChangeNameCommand { get; }
         private void OnChangeNameCommand()
         {
@@ -129,6 +144,12 @@ namespace TutorialsXamarin.ViewModels
         private void OnSelectionChangedCommandParameter(Customer parameter)
         {
             SelectedCustomer = parameter;
+        }
+
+        public ICommand ItemTabbedCommand { get; }
+        private void OnItemTabbedCommand(Customer customer)
+        {
+
         }
 
         #endregion

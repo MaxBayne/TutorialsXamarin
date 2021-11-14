@@ -2,31 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TutorialsXamarin.ViewModels;assembly=TutorialsXamarin"
+             xmlns:models="clr-namespace:TutorialsXamarin.Common.Models;assembly=TutorialsXamarin.Common"
+             xmlns:formsBehaviors="clr-namespace:TutorialsXamarin.Behaviors.FormsBehaviors;assembly=TutorialsXamarin"
+             xmlns:attachedBehaviors="clr-namespace:TutorialsXamarin.Behaviors.AttachedBehaviors;assembly=TutorialsXamarin"
              x:Class="TutorialsXamarin.Views.MvvmPage"
+             x:DataType="viewModels:MvvmViewModel"
              Title="Customers List">
 
-    <!--Not Recommended-->
+    <!--Not Recommended For Set ViewModel Of View-->
     <!--<ContentPage.BindingContext>
         <viewModels:MvvmViewModel/>
     </ContentPage.BindingContext>-->
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="iTunes.png" Text="Add" Command="{Binding AddNewCustomerCommand}"/>
+        <ToolbarItem IconImageSource="refresh24.png" Text="Refresh" Command="{Binding RefreshListCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
+        <StackLayout >
 
-
-        <StackLayout>
+            <Entry Placeholder="Enter Number" 
+                   attachedBehaviors:NumericValidationBehavior.AttachBehavior="True" />
 
             <RefreshView x:Name="RvRefreshCollection">
                          <!--Refreshing="rv_RefreshCollection_Refreshing"-->
 
-                <CollectionView x:Name="CvCourses" 
+                <CollectionView x:Name="CvCustomers" 
                                 SelectionMode="Single"
                                 IsGrouped="False"
                                 ItemsSource="{Binding Customers}"
                                 SelectionChangedCommand="{Binding SelectionChangedCommand}"
                                 SelectionChangedCommandParameter="{Binding SelectionChangedCommandParameter}">
-                                <!--SelectionChanged="CVCourses_SelectionChanged"-->
+                               
 
 
+                    <CollectionView.Behaviors>
+                        <formsBehaviors:ItemSelectedBehavior ></formsBehaviors:ItemSelectedBehavior>
+                    </CollectionView.Behaviors>
+                    
                     <!--Set Layouts Type Linear or Grid-->
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"  ItemSpacing="5"  />
@@ -58,8 +72,9 @@
                                         <SwipeItem x:Name="CmdDisplayInfo"
                                                    Text="Info"
                                                    BackgroundColor="SkyBlue"
-                                                   CommandParameter="{Binding FirstName}"/>
-                                        <!--Clicked="CmdDisplayInfo_OnClicked"-->
+                                                   CommandParameter="{Binding FirstName}"
+                                                   />
+                                        
 
                                     </SwipeItems>
 
@@ -72,16 +87,15 @@
                                         <SwipeItem x:Name="CmdRemoveItem"
                                                    Text="Remove"
                                                    BackgroundColor="Red"
+                                                   x:DataType="viewModels:MvvmViewModel"
                                                    Command="{Binding RemoveCustomerCommand}"
-                                                   CommandParameter="{Binding SelectedCustomer }"
+                                                   CommandParameter="{Binding SelectedCustomer }"  
                                                    />
-                                        <!--CommandParameter="{Binding Code}"-->
-                                        <!--Clicked="Cmd_RemoveItem_OnClicked"-->
                                     </SwipeItems>
 
                                 </SwipeView.RightItems>
 
-                                <Grid>
+                                <Grid x:DataType="models:Customer">
 
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
@@ -118,8 +132,8 @@
                                            Grid.RowSpan="2"
                                            Padding="10,0"/>
                                 </Grid>
-                            </SwipeView>
 
+                            </SwipeView>
 
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
@@ -130,4 +144,5 @@
 
         </StackLayout>
     </ContentPage.Content>
+
 </ContentPage>

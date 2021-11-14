@@ -41,8 +41,9 @@ namespace TutorialsXamarin.Views.FlyoutPage
                     new HomePageFlyoutMenuItem { Id = 5, Title = "Styles"  ,TargetType = typeof(Styles)},
                     new HomePageFlyoutMenuItem { Id = 6, Title = "Web Services"  ,TargetType = typeof(WebServices)},
                     new HomePageFlyoutMenuItem { Id = 7, Title = "Essential"  ,TargetType = typeof(XamarinEssenialPage)},
-                    new HomePageFlyoutMenuItem { Id = 8, Title = "MVVM"  ,TargetType = typeof(MVVM)},
-                    new HomePageFlyoutMenuItem { Id = 9, Title = "Others"  ,TargetType = typeof(Others)}
+                    new HomePageFlyoutMenuItem { Id = 8, Title = "ToolKits"  ,TargetType = typeof(CommunityToolkitsPage)},
+                    new HomePageFlyoutMenuItem { Id = 9, Title = "MVVM"  ,TargetType = typeof(MVVM)},
+                    new HomePageFlyoutMenuItem { Id = 10, Title = "Others"  ,TargetType = typeof(Others)}
                 });
             }
 

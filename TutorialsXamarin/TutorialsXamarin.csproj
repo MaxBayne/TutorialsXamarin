@@ -21,8 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
 
@@ -49,10 +50,10 @@
     <Compile Update="Views\G-Styles\CSSStylesPage.xaml.cs">
       <DependentUpon>CssStylesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\I-XamarinEssential\DeviceServicespage.xaml.cs">
+    <Compile Update="Views\I-Essentials\DeviceServicespage.xaml.cs">
       <DependentUpon>DeviceServicesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\I-XamarinEssential\VersionTrackingPage.xaml.cs">
+    <Compile Update="Views\I-Essentials\VersionTrackingPage.xaml.cs">
       <DependentUpon>VersionTrackingPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -175,16 +176,16 @@
     <EmbeddedResource Update="Views\H-WebServices\WebServices.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\AppInfoPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\AppInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\DeviceDisplayPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\DeviceDisplayPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\DeviceInfoPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\DeviceInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\DevicePlaforrm.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\DevicePlaforrm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\E-Resources\StaticResources\StaticResourcesPage.xaml">
@@ -208,34 +209,40 @@
     <EmbeddedResource Update="Views\G-Styles\StylesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\DeviceSensorsPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\DeviceSensorsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\DeviceServicesPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\DeviceServicesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\DeviceStoragePage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\DeviceStoragePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\IntegrationWithAppsPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\IntegrationWithAppsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\MainThreadPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\MainThreadPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\PickSharePhotosPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\PickSharePhotosPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\VersionTrackingPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\VersionTrackingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\I-XamarinEssential\XamarinEssenialPage.xaml">
+    <EmbeddedResource Update="Views\I-Essentials\XamarinEssenialPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\J-MVVM\MVVM.xaml">
+    <EmbeddedResource Update="Views\J-CommunityToolKits\AvatarViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\J-MVVM\MvvmPage.xaml">
+    <EmbeddedResource Update="Views\J-CommunityToolKits\CommunityToolkitsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\K-MVVM\MVVM.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\K-MVVM\MvvmPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

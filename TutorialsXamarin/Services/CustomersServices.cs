@@ -2,14 +2,11 @@
 using System.Collections.ObjectModel;
 using TutorialsXamarin.Common.Models;
 using TutorialsXamarin.DataAccess;
+using TutorialsXamarin.Interfaces;
 
 namespace TutorialsXamarin.Services
 {
-    public interface ICustomersService
-    {
-        List<Customer> GetCustomersToList();
-        ObservableCollection<Customer> GetCustomers();
-    }
+    
 
     public class CustomersService : ICustomersService
     {

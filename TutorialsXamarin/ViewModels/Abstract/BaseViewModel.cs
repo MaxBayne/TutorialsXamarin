@@ -12,5 +12,11 @@ namespace TutorialsXamarin.ViewModels
             PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        #region Parameters
+
+        public virtual void InitializeParameter(object parameter) {}
+
+        #endregion
     }
 }

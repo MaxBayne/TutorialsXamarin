@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TutorialsXamarin.Views.FlyoutPage
+namespace TutorialsXamarin.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePageFlyout : ContentPage

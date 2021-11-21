@@ -1,6 +1,8 @@
-﻿using TutorialsXamarin.Services;
+﻿using TutorialsXamarin.Interfaces;
+using TutorialsXamarin.Services;
+using TutorialsXamarin.Utilities;
+using TutorialsXamarin.Views;
 using Xamarin.Forms;
-using TutorialsXamarin.Views.FlyoutPage;
 
 
 namespace TutorialsXamarin
@@ -12,9 +14,14 @@ namespace TutorialsXamarin
         {
             InitializeComponent();
 
-            //MainPage = new MainPage();
+            //Store All Views Names inside Navigation Service
+            RegisterViews();
 
-            MainPage = new HomePage();
+            //Using Xamarin Shell For Navigation
+            MainPage = new AppShell();
+
+            //MainPage = new MainPage();
+            //MainPage = NavigationService.CreateNavigationPage(ViewsNames.HomePage);
 
 
             //==================================================================
@@ -149,6 +156,21 @@ namespace TutorialsXamarin
         #region Dependency Injection
 
         public static ICustomersService CustomersService { get; } = new CustomersService();
+        public static INavigationService NavigationService { get; } = new NavigationService();
+        public static IMessagingCenter MessagingService { get; } = new MessagingService();
+
+        #endregion
+
+        #region Register Views
+
+        private void RegisterViews()
+        {
+            //Store All Views Names inside Navigation Service
+            NavigationService.Register(ViewsNames.HomePage, typeof(HomePage));
+
+            NavigationService.Register(ViewsNames.AddCustomer, typeof(AddCustomer));
+            NavigationService.Register(ViewsNames.ViewCustomer, typeof(ViewCustomer));
+        }
 
         #endregion
     }

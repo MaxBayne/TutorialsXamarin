@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TutorialsXamarin.Views.FlyoutPage
+namespace TutorialsXamarin.Views
 {
     public class HomePageFlyoutMenuItem
     {

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:TutorialsXamarin.Views;assembly=TutorialsXamarin"
+             xmlns:local="clr-namespace:TutorialsXamarin;assembly=TutorialsXamarin"
+             x:Class="TutorialsXamarin.AppShell"
+             Title="Shell Page">
+
+
+    <!--Styles and Resources For Shell-->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ClrRed">Red</Color>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+
+    
+
+    <FlyoutItem Title="Main" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Pages" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:PagesTypes}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Layouts" Icon="Twitter.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Layouts}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Views" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:ViewsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Resources" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Resources}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Bindings" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Bindings}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Styles" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Styles}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Web Services" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:WebServices}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Essential" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:XamarinEssenialPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="ToolKits" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:CommunityToolkitsPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="MVVM" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:MVVM}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Others" Icon="iTunes.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Others}" />
+    </FlyoutItem>
+
+    <!--<TabBar>
+
+        <Tab Title="Pages" Icon="iTunes.png">
+            <ShellContent ContentTemplate="{DataTemplate views:PagesTypes}" />
+        </Tab>
+
+        <Tab Title="Layouts" Icon="Twitter.png">
+            <ShellContent ContentTemplate="{DataTemplate views:Layouts}" />
+        </Tab>
+
+        <Tab Title="Views" Icon="iTunes.png">
+            <ShellContent ContentTemplate="{DataTemplate views:ViewsPage}" />
+        </Tab>
+
+    </TabBar>-->
+
+</Shell>

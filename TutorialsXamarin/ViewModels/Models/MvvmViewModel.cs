@@ -2,7 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TutorialsXamarin.Common.Models;
-using TutorialsXamarin.Services;
+using TutorialsXamarin.Interfaces;
+using TutorialsXamarin.Utilities;
 using Xamarin.Forms;
 
 // ReSharper disable once CheckNamespace
@@ -10,10 +11,19 @@ namespace TutorialsXamarin.ViewModels
 {
     public class MvvmViewModel:BaseViewModel, IMvvmViewModel
     {
-        public MvvmViewModel(ICustomersService customersService)
+        // ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
+        private readonly ICustomersService _customersService;
+        private readonly IMessagingCenter _messagingService;
+        private readonly INavigationService _navigationService;
+
+        public MvvmViewModel(ICustomersService customersService,INavigationService navigationService, IMessagingCenter messagingService)
         {
+            _customersService = customersService;
+            _navigationService = navigationService;
+            _messagingService = messagingService;
+
             //Initial Properties
-            Customers = new ObservableCollection<Customer>(customersService.GetCustomersToList());
+            Customers = new ObservableCollection<Customer>(_customersService.GetCustomersToList());
 
             //Initial Commands
             RefreshListCommand = new Command(OnRefreshListCommand);
@@ -27,6 +37,18 @@ namespace TutorialsXamarin.ViewModels
 
             ItemTabbedCommand = new Command<Customer>(OnItemTabbedCommand);
         }
+
+        #region Parameters
+
+        public override void InitializeParameter(object parameter)
+        {
+            if (parameter != null)
+            {
+
+            }
+        }
+
+        #endregion
 
         #region Properites
 
@@ -109,13 +131,17 @@ namespace TutorialsXamarin.ViewModels
         public ICommand AddNewCustomerCommand { get; }
         private void OnAddNewCustomerCommand()
         {
-         
+            _navigationService.NavigateToPage(ViewsNames.AddCustomer,"Iam Parameter");
+
+            _messagingService.Send(this, MessagesNames.Notification,"Register New Customer");
         }
         
         public ICommand RefreshListCommand { get; }
         private void OnRefreshListCommand()
         {
+            _navigationService.NavigateToModel(ViewsNames.ViewCustomer,"Hello World");
 
+            _messagingService.Send(this, MessagesNames.Notification, "Refresh List of Customers");
         }
 
         public ICommand ChangeNameCommand { get; }
@@ -149,7 +175,7 @@ namespace TutorialsXamarin.ViewModels
         public ICommand ItemTabbedCommand { get; }
         private void OnItemTabbedCommand(Customer customer)
         {
-
+           
         }
 
         #endregion

@@ -1,5 +1,4 @@
 ﻿using System;
-using TutorialsXamarin.Views.FlyoutPage;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

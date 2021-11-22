@@ -42,7 +42,7 @@
             <Label Text="{StaticResource Greeting}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" TextColor="{StaticResource GreenColor }" />
-            <Entry Placeholder="Enter You Name" VerticalOptions="Start" Style="{StaticResource whiteEntryStyle}"/>
+            <Entry Placeholder="Enter You Name" VerticalOptions="Start" Style="{StaticResource RedColor}"/>
             <Button Style="{StaticResource GrayButtonStyle}" Text="Click Me"/>
 
             <BoxView StyleClass="SilverBGBox,RoundedBox"/>

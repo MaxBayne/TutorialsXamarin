@@ -105,6 +105,19 @@
   <ItemGroup>
     <Content Include="Assets\Chrome.png" />
     <AndroidResource Include="Assets\coke.jpg" />
+    <Content Include="Assets\Icon_Bindings.png" />
+    <Content Include="Assets\Icon_Essential.png" />
+    <Content Include="Assets\Icon_Home.png" />
+    <AndroidResource Include="Assets\Icon_Hyper.png" />
+    <Content Include="Assets\Icon_Layout.png" />
+    <Content Include="Assets\Icon_Logo.png" />
+    <Content Include="Assets\Icon_Others.png" />
+    <Content Include="Assets\Icon_Pages.png" />
+    <Content Include="Assets\Icon_Resources.png" />
+    <Content Include="Assets\Icon_Services.png" />
+    <Content Include="Assets\Icon_Styles.png" />
+    <Content Include="Assets\Icon_ToolKits.png" />
+    <Content Include="Assets\Icon_Views.png" />
     <Content Include="Assets\iTunes.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />

@@ -14,71 +14,159 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+    <!--Header Section-->
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="120">
+            <Image Source="Icon_Logo.png" HorizontalOptions="Center" Aspect="AspectFit"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!--Footer Section-->
+    <Shell.FlyoutFooter>
+        <Grid HeightRequest="50">
+            <Label Text="All Rights Reserved @ 2030" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+    </Shell.FlyoutFooter>
+
+    <!--FlyoutItem Template that define the shape of FlyoutItems-->
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" 
+                       Source="{Binding Icon}"
+                       HeightRequest="24"
+                       Margin="10"/>
+
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       FontAttributes="Bold"/>
+
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!--MenuItem Template that define the shape of MenuItems-->
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.8*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" 
+                       Source="{Binding Icon}"
+                       HeightRequest="24"
+                       Margin="10"/>
+
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       FontAttributes="Bold"/>
+
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
 
     
 
-    <FlyoutItem Title="Main" Icon="iTunes.png">
+
+
+
+    <!--Flyout With Single Item-->
+    <FlyoutItem Title="Home" Icon="Icon_Home.png" FlyoutDisplayOptions="AsSingleItem" Route="home">
         <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Pages" Icon="iTunes.png">
+    <FlyoutItem Title="Pages" Icon="Icon_Pages.png"  FlyoutDisplayOptions="AsSingleItem" Route="pages">
         <ShellContent ContentTemplate="{DataTemplate views:PagesTypes}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Layouts" Icon="Twitter.png">
-        <ShellContent ContentTemplate="{DataTemplate views:Layouts}" />
+    <!--Flyout With Top Tabs-->
+    <FlyoutItem  Title="Resources" Icon="Icon_Resources.png" FlyoutDisplayOptions="AsSingleItem">
+        <Tab>
+            <ShellContent Title="Static"  ContentTemplate="{DataTemplate views:StaticResourcesPage}" />
+            <ShellContent Title="Dynamic" ContentTemplate="{DataTemplate views:DynamicResourcesPage}" />
+        </Tab>
     </FlyoutItem>
 
-    <FlyoutItem Title="Views" Icon="iTunes.png">
+    <!--Flyout With Bottom Tabs-->
+    <FlyoutItem Title="Layouts 1.0" Icon="Icon_Layout.png"  FlyoutDisplayOptions="AsSingleItem"  Route="layouts">
+        <Tab Title="Single" Icon="Icon_Layout.png">
+            <ShellContent  ContentTemplate="{DataTemplate views:SingleLayoutsPage}" />
+        </Tab>
+        
+        <Tab Title="Multi" Icon="Icon_Views.png">
+            <ShellContent  ContentTemplate="{DataTemplate views:MultiLayoutsPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <!--Flyout With Bottom and Top Tabs-->
+    <FlyoutItem Title="Layouts 2.0" Icon="Icon_Layout.png"  FlyoutDisplayOptions="AsSingleItem"  Route="layouts">
+        <Tab Title="Single" Icon="Icon_Layout.png">
+            <ShellContent Title="FrameView"  ContentTemplate="{DataTemplate views:FrameViewPage}" />
+            <ShellContent Title="ScrollView" ContentTemplate="{DataTemplate views:ScrollViewPage}" />
+            <ShellContent Title="ContentView"  ContentTemplate="{DataTemplate views:ContentViewPage}" />
+        </Tab>
+
+        <Tab Title="Multi" Icon="Icon_Views.png">
+            <ShellContent Title="StackLayout"  ContentTemplate="{DataTemplate views:StackLayout1}" />
+            <ShellContent Title="AbsoluteLayout" ContentTemplate="{DataTemplate views:AbsoluteLayoutPage}" />
+            <ShellContent Title="RelativeLayout" ContentTemplate="{DataTemplate views:RelativeLayout1}" />
+            <ShellContent Title="GridLayout" ContentTemplate="{DataTemplate views:GridLayout1}" />
+            <ShellContent Title="FlexLayout" ContentTemplate="{DataTemplate views:FlexLayoutPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Views" Icon="Icon_Views.png" Route="views">
         <ShellContent ContentTemplate="{DataTemplate views:ViewsPage}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Resources" Icon="iTunes.png">
-        <ShellContent ContentTemplate="{DataTemplate views:Resources}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Bindings" Icon="iTunes.png">
+    <FlyoutItem Title="Bindings" Icon="Icon_Bindings.png"  FlyoutDisplayOptions="AsSingleItem" Route="bindings">
         <ShellContent ContentTemplate="{DataTemplate views:Bindings}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Styles" Icon="iTunes.png">
+    <FlyoutItem Title="Styles" Icon="Icon_Styles.png" FlyoutDisplayOptions="AsSingleItem"  Route="styles">
         <ShellContent ContentTemplate="{DataTemplate views:Styles}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Web Services" Icon="iTunes.png">
+    <FlyoutItem Title="Web Services" Icon="Icon_Services.png" FlyoutDisplayOptions="AsSingleItem"  Route="services">
         <ShellContent ContentTemplate="{DataTemplate views:WebServices}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Essential" Icon="iTunes.png">
+    <FlyoutItem Title="Essential" Icon="Icon_Essential.png" FlyoutDisplayOptions="AsSingleItem"  Route="essential">
         <ShellContent ContentTemplate="{DataTemplate views:XamarinEssenialPage}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="ToolKits" Icon="iTunes.png">
+    <FlyoutItem Title="ToolKits" Icon="Icon_ToolKits.png" FlyoutDisplayOptions="AsSingleItem"  Route="toolkits">
         <ShellContent ContentTemplate="{DataTemplate views:CommunityToolkitsPage}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="MVVM" Icon="iTunes.png">
+    <FlyoutItem Title="MVVM" Icon="Icon_Essential.png"  FlyoutDisplayOptions="AsSingleItem" Route="mvvm">
         <ShellContent ContentTemplate="{DataTemplate views:MVVM}" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Others" Icon="iTunes.png">
+    <FlyoutItem Title="Others" Icon="Icon_Others.png"  FlyoutDisplayOptions="AsSingleItem" Route="others">
         <ShellContent ContentTemplate="{DataTemplate views:Others}" />
     </FlyoutItem>
 
-    <!--<TabBar>
+    <!--Menu Items Support Click Events and Commands-->
+    <MenuItem Text="Menu1" IconImageSource="Icon_Pages.png"/>
+    <MenuItem Text="Menu2" IconImageSource="Icon_Pages.png"/>
 
+
+    <!--Tabs Bar-->
+    <TabBar>
         <Tab Title="Pages" Icon="iTunes.png">
             <ShellContent ContentTemplate="{DataTemplate views:PagesTypes}" />
         </Tab>
-
         <Tab Title="Layouts" Icon="Twitter.png">
             <ShellContent ContentTemplate="{DataTemplate views:Layouts}" />
         </Tab>
-
         <Tab Title="Views" Icon="iTunes.png">
             <ShellContent ContentTemplate="{DataTemplate views:ViewsPage}" />
         </Tab>
-
-    </TabBar>-->
+    </TabBar>
 
 </Shell>

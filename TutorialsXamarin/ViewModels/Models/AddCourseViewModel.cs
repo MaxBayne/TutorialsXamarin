@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 using System.Windows.Input;
-using TutorialsXamarin.Common.Models;
+using TutorialsXamarin.Business.Models;
 
 namespace TutorialsXamarin.ViewModels
 {

@@ -1,4 +1,7 @@
-﻿using TutorialsXamarin.Interfaces;
+﻿using TutorialsXamarin.Business.Interfaces;
+using TutorialsXamarin.Business.Managers;
+using TutorialsXamarin.Common.Enums;
+using TutorialsXamarin.Interfaces;
 using TutorialsXamarin.Services;
 using TutorialsXamarin.Utilities;
 using TutorialsXamarin.Views;
@@ -10,13 +13,15 @@ namespace TutorialsXamarin
     // ReSharper disable once RedundantExtendsListEntry
     public partial class App : Application
     {
+        public static ConnectionType ConnectionType =>ConnectionType.Mock;
+
         public App()
         {
             InitializeComponent();
 
             //Store All Views Names inside Navigation Service
             RegisterViews();
-
+            
             //Using Xamarin Shell For Navigation
             MainPage = new AppShell();
 
@@ -155,9 +160,10 @@ namespace TutorialsXamarin
 
         #region Dependency Injection
 
-        public static ICustomersService CustomersService { get; } = new CustomersService();
-        public static INavigationService NavigationService { get; } = new NavigationService();
-        public static IMessagingCenter MessagingService { get; } = new MessagingService();
+        public static ICustomerManager CustomersManager => new CustomerManager(App.ConnectionType);
+        public static INavigationService NavigationService => new NavigationService();
+        public static IMessagingCenter MessagingService => new MessagingService();
+        
 
         #endregion
 

@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using TutorialsXamarin.Common.Models;
+using TutorialsXamarin.Business.Models;
 
 namespace TutorialsXamarin.ViewModels
 {

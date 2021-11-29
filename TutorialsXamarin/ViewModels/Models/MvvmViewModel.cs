@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using TutorialsXamarin.Common.Models;
+using TutorialsXamarin.Business.Interfaces;
+using TutorialsXamarin.Business.Models;
 using TutorialsXamarin.Interfaces;
 using TutorialsXamarin.Utilities;
 using Xamarin.Forms;
@@ -12,18 +13,20 @@ namespace TutorialsXamarin.ViewModels
     public class MvvmViewModel:BaseViewModel, IMvvmViewModel
     {
         // ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
-        private readonly ICustomersService _customersService;
+        private readonly ICustomerManager _customersManager;
         private readonly IMessagingCenter _messagingService;
         private readonly INavigationService _navigationService;
 
-        public MvvmViewModel(ICustomersService customersService,INavigationService navigationService, IMessagingCenter messagingService)
+        public MvvmViewModel(ICustomerManager customersManager,INavigationService navigationService, IMessagingCenter messagingService)
         {
-            _customersService = customersService;
+            _customersManager = customersManager;
             _navigationService = navigationService;
             _messagingService = messagingService;
 
             //Initial Properties
-            Customers = new ObservableCollection<Customer>(_customersService.GetCustomersToList());
+            var customersList = _customersManager.GetCustomersToList();
+
+            Customers = new ObservableCollection<Customer>(customersList.Result);
 
             //Initial Commands
             RefreshListCommand = new Command(OnRefreshListCommand);
@@ -32,8 +35,7 @@ namespace TutorialsXamarin.ViewModels
 
             ChangeNameCommand = new Command(OnChangeNameCommand);
             
-            SelectionChangedCommand = new Command<Customer>(OnSelectionChangedCommand);
-            SelectionChangedCommandParameter = new Command<Customer>(OnSelectionChangedCommandParameter);
+            SelectionChangedCommand = new Command(OnSelectionChangedCommand);
 
             ItemTabbedCommand = new Command<Customer>(OnItemTabbedCommand);
         }
@@ -128,15 +130,17 @@ namespace TutorialsXamarin.ViewModels
 
         #region Commands
 
-        public ICommand AddNewCustomerCommand { get; }
-        private void OnAddNewCustomerCommand()
+        public ICommand AddNewCustomerCommand { get; set; }
+        private async void OnAddNewCustomerCommand()
         {
-            _navigationService.NavigateToPage(ViewsNames.AddCustomer,"Iam Parameter");
+            //_navigationService.NavigateToPage(ViewsNames.AddCustomer,"Iam Parameter");
 
-            _messagingService.Send(this, MessagesNames.Notification,"Register New Customer");
+            //_messagingService.Send(this, MessagesNames.Notification,"Register New Customer");
+
+            await Shell.Current.GoToAsync(@"newcustomer");
         }
         
-        public ICommand RefreshListCommand { get; }
+        public ICommand RefreshListCommand { get; set; }
         private void OnRefreshListCommand()
         {
             _navigationService.NavigateToModel(ViewsNames.ViewCustomer,"Hello World");
@@ -144,7 +148,7 @@ namespace TutorialsXamarin.ViewModels
             _messagingService.Send(this, MessagesNames.Notification, "Refresh List of Customers");
         }
 
-        public ICommand ChangeNameCommand { get; }
+        public ICommand ChangeNameCommand { get; set; }
         private void OnChangeNameCommand()
         {
             FirstName = "Mohammed";
@@ -154,25 +158,20 @@ namespace TutorialsXamarin.ViewModels
              
         }
 
-        public ICommand RemoveCustomerCommand { get; }
+        public ICommand RemoveCustomerCommand { get; set; }
         private void OnRemoveCustomerCommand(object parameter)
         {
             Customers.Remove((Customer)parameter);
         }
 
-        public ICommand SelectionChangedCommand { get; }
-        private void OnSelectionChangedCommand(Customer parameter)
+        public ICommand SelectionChangedCommand { get; set; }
+        private void OnSelectionChangedCommand()
         {
-            //SelectedCustomer = (Customer)parameter;
+            Shell.Current.GoToAsync($"viewcustomer?id={SelectedCustomer.Code}");
         }
+        
 
-        public ICommand SelectionChangedCommandParameter { get; }
-        private void OnSelectionChangedCommandParameter(Customer parameter)
-        {
-            SelectedCustomer = parameter;
-        }
-
-        public ICommand ItemTabbedCommand { get; }
+        public ICommand ItemTabbedCommand { get; set; }
         private void OnItemTabbedCommand(Customer customer)
         {
            

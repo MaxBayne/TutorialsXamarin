@@ -8,7 +8,9 @@ namespace TutorialsXamarin.ViewModels
 
         #region MVVM
 
-        public static MvvmViewModel MvvmViewModel { get; set; } = new MvvmViewModel(App.CustomersService,App.NavigationService,App.MessagingService);
+        public static MvvmViewModel MvvmViewModel { get; set; } = new MvvmViewModel(App.CustomersManager,App.NavigationService,App.MessagingService);
+
+        public static CustomersViewModel CustomersViewModel { get; set; } = new CustomersViewModel(App.CustomersManager);
 
         #endregion
 

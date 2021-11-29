@@ -1,4 +1,4 @@
-﻿using TutorialsXamarin.Common.Models;
+﻿using TutorialsXamarin.Business.Models;
 using Xamarin.Forms;
 
 namespace TutorialsXamarin.Behaviors.FormsBehaviors

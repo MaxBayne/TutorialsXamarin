@@ -13,7 +13,14 @@
 
         
             <!--Xaml Styles-->
-            <ResourceDictionary>
+        <ResourceDictionary>
+
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons"/>
+                <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons"/>
+            </OnPlatform>
+
+
 
             <!--Split Resources To Files-->
             <ResourceDictionary.MergedDictionaries>
@@ -36,6 +43,8 @@
                 <!--Colors Resources-->
                 <ResourceDictionary>
                     <Color x:Key="GreenColor">Green</Color>
+
+
                 </ResourceDictionary>
 
                 <!--Styles Resources-->
@@ -47,10 +56,10 @@
                 </ResourceDictionary>
 
             </ResourceDictionary.MergedDictionaries>
-            
+
         </ResourceDictionary>
 
-            <!--Css Styles-->
+        <!--Css Styles-->
             <StyleSheet Source="/Resources/Stylesheet1.css"></StyleSheet>
 
     </Application.Resources>

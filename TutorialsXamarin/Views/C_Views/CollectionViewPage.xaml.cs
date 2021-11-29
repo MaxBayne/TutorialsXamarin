@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using TutorialsXamarin.Common.Models;
+using TutorialsXamarin.Business.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

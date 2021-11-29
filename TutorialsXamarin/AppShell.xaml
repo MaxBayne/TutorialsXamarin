@@ -2,16 +2,139 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:TutorialsXamarin.Views;assembly=TutorialsXamarin"
-             xmlns:local="clr-namespace:TutorialsXamarin;assembly=TutorialsXamarin"
+             xmlns:utilites="clr-namespace:TutorialsXamarin.Utilities"
              x:Class="TutorialsXamarin.AppShell"
-             Title="Shell Page">
+             FlyoutHeaderBehavior="CollapseOnScroll"
+             ItemTemplate="{StaticResource ShellDataTemplate}"
+             >
+    <!--
+    
+    TitleColor="{StaticResource ShellTitleColor}"
+    ForegroundColor="{StaticResource ShellForegroundColor}"
+    BackgroundColor="{StaticResource ShellBackgroundColor}"
+    DisabledColor="{StaticResource ShellDisabledColor}"
+    UnselectedColor="{StaticResource ShellUnselectedColor}"
+
+     TabBarTitleColor="{StaticResource ShellTabBarTitleColor}"
+     TabBarForegroundColor="{StaticResource ShellTabBarForegroundColor}"
+     TabBarBackgroundColor="{StaticResource ShellTabBarBackgroundColor}"
+     TabBarDisabledColor="{StaticResource ShellTabBarDisabledColor}"
+     TabBarUnselectedColor="{StaticResource ShellTabBarUnselectedColor}"
+
+    
+    FlyoutBackgroundColor="Red"
+    FlyoutBehavior="Disabled"
+    FlyoutBehavior="Locked"
+    FlyoutIcon="Icon_Home.png"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    FlyoutHeaderBehavior="Scroll"
+    FlyoutHeaderBehavior="Fixed"
+    FlyoutHeight="500"
+    FlyoutWidth="250"
+    
+    -->
 
 
-    <!--Styles and Resources For Shell-->
+<!--Styles and Resources For Shell-->
     <Shell.Resources>
         <ResourceDictionary>
-            <Color x:Key="ClrRed">Red</Color>
+
+            <!--Fonts-->
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons"/>
+                <On Platform="ios" Value="Material Design Icons"/>
+            </OnPlatform>
+
+            <!--Colors-->
+            <Color x:Key="ShellTitleColor">WhiteSmoke</Color>
+            <Color x:Key="ShellForegroundColor">WhiteSmoke</Color>
+            <Color x:Key="ShellBackgroundColor">DodgerBlue</Color>
+            <Color x:Key="ShellDisabledColor">Yellow</Color>
+            <Color x:Key="ShellUnselectedColor"></Color>
+
+            <Color x:Key="ShellTabBarTitleColor">Black</Color>
+            <Color x:Key="ShellTabBarForegroundColor">Coral</Color>
+            <Color x:Key="ShellTabBarBackgroundColor">Gainsboro</Color>
+            <Color x:Key="ShellTabBarDisabledColor">DimGray</Color>
+            <Color x:Key="ShellTabBarUnselectedColor"></Color>
+
+            <!--Styles-->
+            <Style x:Key="StyleBase" TargetType="Element">
+                <Setter Property="Shell.TitleColor" Value="{StaticResource ShellTitleColor}"/>
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource ShellForegroundColor}"/>
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource ShellBackgroundColor}"/>
+                <Setter Property="Shell.DisabledColor" Value="{StaticResource ShellDisabledColor}"/>
+                <Setter Property="Shell.UnselectedColor" Value="{StaticResource ShellUnselectedColor}"/>
+
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource ShellTabBarTitleColor}"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource ShellTabBarForegroundColor}"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource ShellTabBarBackgroundColor}"/>
+                <Setter Property="Shell.TabBarDisabledColor" Value="{StaticResource ShellTabBarDisabledColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource ShellTabBarUnselectedColor}"/>
+            </Style>
+            <Style x:Key="StyleMenuShell" TargetType="Element" BasedOn="{StaticResource StyleBase}" >
+
+            </Style>
+
+            <!--Templates-->
+            <DataTemplate x:Key="TemplateHeader" x:DataType="FlyoutItem">
+                <ContentView>
+                    <Grid Margin="10,10,10,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Text="{Binding Title}"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               FontAttributes="Bold"
+                               TextColor="Gray"
+                               FontSize="Subtitle"/>
+
+                        <BoxView Grid.Row="1"
+                                 BackgroundColor="Silver"
+                                 HeightRequest=".1"/>
+
+                    </Grid>
+                </ContentView>
+            </DataTemplate>
+            <DataTemplate x:Key="TemplateSplitter" x:DataType="FlyoutItem">
+                <ContentView>
+                        <BoxView BackgroundColor="Silver" HeightRequest=".1" Margin="10,10,10,10"/>
+                </ContentView>
+            </DataTemplate>
+            <DataTemplate x:Key="TemplateItem" x:DataType="FlyoutItem">
+                <ContentView>
+                    <Grid Margin="0,2,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.8*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" 
+                               Source="{Binding Icon}"
+                               HeightRequest="24"/>
+
+                        <Label Grid.Column="1"
+                               Text="{Binding Title}"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               FontSize="Subtitle"/>
+
+                    </Grid>
+                </ContentView>
+            </DataTemplate>
+            <utilites:ShellDataTemplate x:Key="ShellDataTemplate" 
+                                        ItemDataTemplate="{StaticResource TemplateItem}" 
+                                        HeaderDataTemplate="{StaticResource TemplateHeader}" 
+                                        SplitterDataTemplate="{StaticResource TemplateSplitter}"/>
+
         </ResourceDictionary>
+
+        
+
     </Shell.Resources>
 
     <!--Header Section-->
@@ -29,7 +152,7 @@
     </Shell.FlyoutFooter>
 
     <!--FlyoutItem Template that define the shape of FlyoutItems-->
-    <Shell.ItemTemplate>
+    <!--<Shell.ItemTemplate>
         <DataTemplate>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -50,12 +173,12 @@
 
             </Grid>
         </DataTemplate>
-    </Shell.ItemTemplate>
+    </Shell.ItemTemplate>-->
 
     <!--MenuItem Template that define the shape of MenuItems-->
     <Shell.MenuItemTemplate>
         <DataTemplate>
-            <Grid>
+            <Grid x:DataType="MenuItem">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.2*"/>
                     <ColumnDefinition Width="0.8*"/>
@@ -83,23 +206,31 @@
 
 
     <!--Flyout With Single Item-->
-    <FlyoutItem Title="Home" Icon="Icon_Home.png" FlyoutDisplayOptions="AsSingleItem" Route="home">
+    <FlyoutItem Title="Home" Route="home" Icon="Icon_Home.png" Style="{StaticResource StyleMenuShell}">
+        <!--<FlyoutItem.FlyoutIcon>
+            <FontImageSource FontFamily="{DynamicResource MaterialFontFamily}"
+                             Color="Black"
+                             Glyph="{x:Static utilites:MaterialDesignIconFont.Home}"/>
+        </FlyoutItem.FlyoutIcon>-->
         <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Pages" Icon="Icon_Pages.png"  FlyoutDisplayOptions="AsSingleItem" Route="pages">
+    <FlyoutItem Title="Pages" Icon="Icon_Pages.png" Route="pages" Style="{StaticResource StyleMenuShell}">
         <ShellContent ContentTemplate="{DataTemplate views:PagesTypes}" />
+        <ShellContent/>
     </FlyoutItem>
 
     <!--Flyout With Top Tabs-->
-    <FlyoutItem  Title="Resources" Icon="Icon_Resources.png" FlyoutDisplayOptions="AsSingleItem">
+    <FlyoutItem  Title="Resources" Icon="Icon_Resources.png" Style="{StaticResource StyleMenuShell}">
         <Tab>
             <ShellContent Title="Static"  ContentTemplate="{DataTemplate views:StaticResourcesPage}" />
             <ShellContent Title="Dynamic" ContentTemplate="{DataTemplate views:DynamicResourcesPage}" />
         </Tab>
     </FlyoutItem>
 
-    <!--Flyout With Bottom Tabs-->
-    <FlyoutItem Title="Layouts 1.0" Icon="Icon_Layout.png"  FlyoutDisplayOptions="AsSingleItem"  Route="layouts">
+    <FlyoutItem  Title="Layouts" Route="header"><ShellContent/></FlyoutItem>
+
+        <!--Flyout With Bottom Tabs-->
+    <FlyoutItem Title="Layouts 1.0" Icon="Icon_Layout.png"  Style="{StaticResource StyleMenuShell}"  Route="layouts">
         <Tab Title="Single" Icon="Icon_Layout.png">
             <ShellContent  ContentTemplate="{DataTemplate views:SingleLayoutsPage}" />
         </Tab>
@@ -110,7 +241,7 @@
     </FlyoutItem>
 
     <!--Flyout With Bottom and Top Tabs-->
-    <FlyoutItem Title="Layouts 2.0" Icon="Icon_Layout.png"  FlyoutDisplayOptions="AsSingleItem"  Route="layouts">
+    <FlyoutItem Title="Layouts 2.0" Icon="Icon_Layout.png"  Style="{StaticResource StyleMenuShell}"  Route="layouts">
         <Tab Title="Single" Icon="Icon_Layout.png">
             <ShellContent Title="FrameView"  ContentTemplate="{DataTemplate views:FrameViewPage}" />
             <ShellContent Title="ScrollView" ContentTemplate="{DataTemplate views:ScrollViewPage}" />
@@ -126,34 +257,50 @@
         </Tab>
     </FlyoutItem>
 
+    <FlyoutItem  Route="splitter"><ShellContent/></FlyoutItem>
+
     <FlyoutItem Title="Views" Icon="Icon_Views.png" Route="views">
         <ShellContent ContentTemplate="{DataTemplate views:ViewsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Bindings" Icon="Icon_Bindings.png"  FlyoutDisplayOptions="AsSingleItem" Route="bindings">
+    <FlyoutItem Title="Bindings" Icon="Icon_Bindings.png"  Style="{StaticResource StyleMenuShell}" Route="bindings">
         <ShellContent ContentTemplate="{DataTemplate views:Bindings}" />
     </FlyoutItem>
-    <FlyoutItem Title="Styles" Icon="Icon_Styles.png" FlyoutDisplayOptions="AsSingleItem"  Route="styles">
+    <FlyoutItem Title="Styles" Icon="Icon_Styles.png" Style="{StaticResource StyleMenuShell}"  Route="styles">
         <ShellContent ContentTemplate="{DataTemplate views:Styles}" />
     </FlyoutItem>
-    <FlyoutItem Title="Web Services" Icon="Icon_Services.png" FlyoutDisplayOptions="AsSingleItem"  Route="services">
+    <FlyoutItem Title="Web Services" Icon="Icon_Services.png" Style="{StaticResource StyleMenuShell}"  Route="services">
         <ShellContent ContentTemplate="{DataTemplate views:WebServices}" />
     </FlyoutItem>
-    <FlyoutItem Title="Essential" Icon="Icon_Essential.png" FlyoutDisplayOptions="AsSingleItem"  Route="essential">
+    <FlyoutItem Title="Essential" Icon="Icon_Essential.png" Style="{StaticResource StyleMenuShell}"  Route="essential">
         <ShellContent ContentTemplate="{DataTemplate views:XamarinEssenialPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="ToolKits" Icon="Icon_ToolKits.png" FlyoutDisplayOptions="AsSingleItem"  Route="toolkits">
+    <FlyoutItem Title="ToolKits" Icon="Icon_ToolKits.png" Style="{StaticResource StyleMenuShell}"  Route="toolkits">
         <ShellContent ContentTemplate="{DataTemplate views:CommunityToolkitsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="MVVM" Icon="Icon_Essential.png"  FlyoutDisplayOptions="AsSingleItem" Route="mvvm">
+
+    <FlyoutItem  Title="MVVM" Route="header"><ShellContent/></FlyoutItem>
+
+    <FlyoutItem Title="Master" Icon="Icon_Services.png"  Style="{StaticResource StyleMenuShell}" Route="mvvm">
         <ShellContent ContentTemplate="{DataTemplate views:MVVM}" />
     </FlyoutItem>
-    <FlyoutItem Title="Others" Icon="Icon_Others.png"  FlyoutDisplayOptions="AsSingleItem" Route="others">
+
+    <FlyoutItem Title="Customers List" Icon="Icon_Essential.png"  Style="{StaticResource StyleMenuShell}" Route="customers">
+        <ShellContent ContentTemplate="{DataTemplate views:MvvmPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem  Route="splitter"><ShellContent/></FlyoutItem>
+
+    <FlyoutItem Title="Shell" Icon="Icon_Essential.png"  Style="{StaticResource StyleMenuShell}" Route="shell">
+        <ShellContent ContentTemplate="{DataTemplate views:ShellPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Others" Icon="Icon_Others.png"  Style="{StaticResource StyleMenuShell}" Route="others">
         <ShellContent ContentTemplate="{DataTemplate views:Others}" />
     </FlyoutItem>
 
     <!--Menu Items Support Click Events and Commands-->
-    <MenuItem Text="Menu1" IconImageSource="Icon_Pages.png"/>
-    <MenuItem Text="Menu2" IconImageSource="Icon_Pages.png"/>
+    <MenuItem Text="Menu1" IconImageSource="Icon_Pages.png" Clicked="MenuItem1_OnClicked"/>
+    <MenuItem Text="Menu2" IconImageSource="Icon_Pages.png" Clicked="MenuItem2_OnClicked"/>
+    <MenuItem Text="Menu3" IconImageSource="Icon_Pages.png" Clicked="MenuItem_OnClicked"/>
 
 
     <!--Tabs Bar-->

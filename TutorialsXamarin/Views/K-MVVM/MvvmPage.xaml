@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:TutorialsXamarin.ViewModels;assembly=TutorialsXamarin"
-             xmlns:models="clr-namespace:TutorialsXamarin.Common.Models;assembly=TutorialsXamarin.Common"
+             xmlns:models="clr-namespace:TutorialsXamarin.Business.Models;assembly=TutorialsXamarin.Business"
              xmlns:formsBehaviors="clr-namespace:TutorialsXamarin.Behaviors.FormsBehaviors;assembly=TutorialsXamarin"
              xmlns:attachedBehaviors="clr-namespace:TutorialsXamarin.Behaviors.AttachedBehaviors;assembly=TutorialsXamarin"
+             xmlns:utilities="clr-namespace:TutorialsXamarin.Utilities;assembly=TutorialsXamarin"
              x:Class="TutorialsXamarin.Views.MvvmPage"
              x:DataType="viewModels:MvvmViewModel"
              Title="Customers List">
@@ -15,9 +16,28 @@
     </ContentPage.BindingContext>-->
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="iTunes.png" Text="Add" Command="{Binding AddNewCustomerCommand}"/>
         <ToolbarItem IconImageSource="refresh24.png" Text="Refresh" Command="{Binding RefreshListCommand}"/>
+        <ToolbarItem IconImageSource="add.png" Text="Add" Command="{Binding AddNewCustomerCommand}"/>
     </ContentPage.ToolbarItems>
+
+    <Shell.SearchHandler>
+        <utilities:CustomersSearchHandler Placeholder="Enter Name For Search" ShowsResults="True" DisplayMemberName="FullName">
+            <utilities:CustomersSearchHandler.ItemTemplate>
+                <DataTemplate>
+                    <Grid x:DataType="models:Customer" Padding="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Row="0" Grid.Column="0" Source="{Binding Image}" Aspect="AspectFit" HeightRequest="16" WidthRequest="16"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding FullName}" VerticalOptions="Center"/>
+
+                    </Grid>
+                </DataTemplate>
+            </utilities:CustomersSearchHandler.ItemTemplate>
+        </utilities:CustomersSearchHandler>
+    </Shell.SearchHandler>
 
     <ContentPage.Content>
         <StackLayout >
@@ -33,8 +53,10 @@
                                 IsGrouped="False"
                                 ItemsSource="{Binding Customers}"
                                 SelectionChangedCommand="{Binding SelectionChangedCommand}"
-                                SelectionChangedCommandParameter="{Binding SelectionChangedCommandParameter}">
-                               
+                                SelectedItem="{Binding SelectedCustomer}">
+
+
+
 
 
                     <CollectionView.Behaviors>

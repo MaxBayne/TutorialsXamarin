@@ -1,7 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using TutorialsXamarin.Business.BusinessModels;
-using TutorialsXamarin.DataAccess;
+using TutorialsXamarin.Business.Models;
+using TutorialsXamarin.Common.Enums;
+using TutorialsXamarin.DataAccess.Da;
 
 namespace TutorialsXamarin.Business.Managers
 {
@@ -9,9 +10,9 @@ namespace TutorialsXamarin.Business.Managers
     {
         private readonly AlbumDa _albumDa;
 
-        public AlbumManager()
+        public AlbumManager(ConnectionType connectionType)
         {
-            _albumDa = new AlbumDa();
+            _albumDa = new AlbumDa(connectionType);
         }
 
         public async Task<ObservableCollection<AlbumPhoto>> Get_All_Photos_Async()

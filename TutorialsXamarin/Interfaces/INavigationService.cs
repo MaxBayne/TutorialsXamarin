@@ -39,6 +39,7 @@ namespace TutorialsXamarin.Interfaces
         /// <param name="type"></param>
         /// <param name="parameter"></param>
         void NavigateToPage(Type type, object parameter = null);
+        
 
 
         /// <summary>

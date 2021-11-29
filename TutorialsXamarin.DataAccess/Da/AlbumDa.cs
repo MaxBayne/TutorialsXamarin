@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TutorialsXamarin.DataAccess.DataModels;
+using TutorialsXamarin.DataAccess.Models;
 using Newtonsoft.Json;
+using TutorialsXamarin.Common.Enums;
+using TutorialsXamarin.DataAccess.Abstracts;
 
-namespace TutorialsXamarin.DataAccess
+namespace TutorialsXamarin.DataAccess.Da
 {
-    public class AlbumDa
+    public class AlbumDa: DataAccessBase
     {
+        public AlbumDa(ConnectionType connectionType) : base(connectionType) {}
+
         #region Reterive
 
         public async Task<List<AlbumPhoto>> Get_All_Photos_Async()
@@ -36,5 +40,6 @@ namespace TutorialsXamarin.DataAccess
         #region Delete
 
         #endregion
+        
     }
 }

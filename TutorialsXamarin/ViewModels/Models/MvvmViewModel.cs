@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using TutorialsXamarin.Common.Models;
+using TutorialsXamarin.Business.Models;
+using TutorialsXamarin.Data.Interfaces;
 using TutorialsXamarin.Interfaces;
 using TutorialsXamarin.Utilities;
 using Xamarin.Forms;
@@ -23,7 +25,13 @@ namespace TutorialsXamarin.ViewModels
             _messagingService = messagingService;
 
             //Initial Properties
-            Customers = new ObservableCollection<Customer>(_customersService.GetCustomersToList());
+            Task.Run(async ()=>
+            {
+                await LoadDataAsync();
+            });
+            //var customersList = await _customersService.GetCustomersToListAsync();
+
+            //Customers = new ObservableCollection<Customer>(customersList);
 
             //Initial Commands
             RefreshListCommand = new Command(OnRefreshListCommand);
@@ -32,8 +40,7 @@ namespace TutorialsXamarin.ViewModels
 
             ChangeNameCommand = new Command(OnChangeNameCommand);
             
-            SelectionChangedCommand = new Command<Customer>(OnSelectionChangedCommand);
-            SelectionChangedCommandParameter = new Command<Customer>(OnSelectionChangedCommandParameter);
+            SelectionChangedCommand = new Command(OnSelectionChangedCommand);
 
             ItemTabbedCommand = new Command<Customer>(OnItemTabbedCommand);
         }
@@ -128,15 +135,17 @@ namespace TutorialsXamarin.ViewModels
 
         #region Commands
 
-        public ICommand AddNewCustomerCommand { get; }
-        private void OnAddNewCustomerCommand()
+        public ICommand AddNewCustomerCommand { get; set; }
+        private async void OnAddNewCustomerCommand()
         {
-            _navigationService.NavigateToPage(ViewsNames.AddCustomer,"Iam Parameter");
+            //_navigationService.NavigateToPage(ViewsNames.AddCustomer,"Iam Parameter");
 
-            _messagingService.Send(this, MessagesNames.Notification,"Register New Customer");
+            //_messagingService.Send(this, MessagesNames.Notification,"Register New Customer");
+
+            await Shell.Current.GoToAsync(@"newcustomer");
         }
         
-        public ICommand RefreshListCommand { get; }
+        public ICommand RefreshListCommand { get; set; }
         private void OnRefreshListCommand()
         {
             _navigationService.NavigateToModel(ViewsNames.ViewCustomer,"Hello World");
@@ -144,7 +153,7 @@ namespace TutorialsXamarin.ViewModels
             _messagingService.Send(this, MessagesNames.Notification, "Refresh List of Customers");
         }
 
-        public ICommand ChangeNameCommand { get; }
+        public ICommand ChangeNameCommand { get; set; }
         private void OnChangeNameCommand()
         {
             FirstName = "Mohammed";
@@ -154,25 +163,20 @@ namespace TutorialsXamarin.ViewModels
              
         }
 
-        public ICommand RemoveCustomerCommand { get; }
+        public ICommand RemoveCustomerCommand { get; set; }
         private void OnRemoveCustomerCommand(object parameter)
         {
             Customers.Remove((Customer)parameter);
         }
 
-        public ICommand SelectionChangedCommand { get; }
-        private void OnSelectionChangedCommand(Customer parameter)
+        public ICommand SelectionChangedCommand { get; set; }
+        private void OnSelectionChangedCommand()
         {
-            //SelectedCustomer = (Customer)parameter;
+            Shell.Current.GoToAsync($"viewcustomer?id={SelectedCustomer.Code}");
         }
+        
 
-        public ICommand SelectionChangedCommandParameter { get; }
-        private void OnSelectionChangedCommandParameter(Customer parameter)
-        {
-            SelectedCustomer = parameter;
-        }
-
-        public ICommand ItemTabbedCommand { get; }
+        public ICommand ItemTabbedCommand { get; set; }
         private void OnItemTabbedCommand(Customer customer)
         {
            
@@ -182,7 +186,12 @@ namespace TutorialsXamarin.ViewModels
 
         #region Helper
 
+        private async Task LoadDataAsync()
+        {
+            var customersList = await _customersService.GetCustomersToListAsync();
 
+            Customers = new ObservableCollection<Customer>(customersList);
+        }
 
         #endregion
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using TutorialsXamarin.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,9 +8,12 @@ namespace TutorialsXamarin.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PagesTypes : ContentPage
     {
-        public PagesTypes()
+        private INavigationService _navigationService;
+        public PagesTypes(INavigationService navigationService)
         {
             InitializeComponent();
+
+            _navigationService = navigationService;
         }
 
         private void Button_OnClicked(object sender, EventArgs e)
@@ -27,7 +31,7 @@ namespace TutorialsXamarin.Views
                         break;
 
                     case "Flyout":
-                        Navigation.PushModalAsync(new NavigationPage(new HomePage()));
+                        Navigation.PushModalAsync(new NavigationPage(new HomePage(_navigationService)));
                         break;
 
                     case "Full":

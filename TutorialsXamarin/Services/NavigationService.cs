@@ -2,20 +2,37 @@
 using System.Collections.Generic;
 using TutorialsXamarin.Extensions;
 using TutorialsXamarin.Interfaces;
+using TutorialsXamarin.Utilities;
 using TutorialsXamarin.ViewModels;
+using TutorialsXamarin.Views;
 using Xamarin.Forms;
 
 namespace TutorialsXamarin.Services
 {
     public class NavigationService: INavigationService
     {
-        private Dictionary<string, Type> ViewsList { get; }= new Dictionary<string, Type>();
+        
+        public static void ConfigNavigation()
+        {
+            //Store All Views Names inside Navigation Service
+            RegisterView(ViewsNames.HomePage, typeof(HomePage));
+            RegisterView(ViewsNames.AddCustomer, typeof(AddCustomer));
+            RegisterView(ViewsNames.ViewCustomer, typeof(ViewCustomer));
+
+            //Using Xamarin Shell For Navigation
+            Application.Current.MainPage = new AppShell();
+        }
+
+
+        private static Dictionary<string, Type> ViewsList { get; }= new Dictionary<string, Type>();
 
 
         //Main Page For Application
         public Page MainPage => Application.Current.MainPage;
 
-
+       
+        //Insert View inside Views List
+        public static void RegisterView(string view, Type type) => ViewsList[view] = type;
 
         //Insert View inside Views List
         public void Register(string view, Type type) => ViewsList[view] = type;
@@ -164,5 +181,6 @@ namespace TutorialsXamarin.Services
             return null;
         }
 
+       
     }
 }

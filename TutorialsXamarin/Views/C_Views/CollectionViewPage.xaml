@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TutorialsXamarin.Views.CollectionViewPage"
-             xmlns:models="clr-namespace:TutorialsXamarin.Common.Models;assembly=TutorialsXamarin.Common"
+             xmlns:models="clr-namespace:TutorialsXamarin.Business.Models;assembly=TutorialsXamarin.Business"
              Title="CollectionView">
 
     <ContentPage.Resources>

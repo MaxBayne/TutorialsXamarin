@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using TutorialsXamarin.Common.Models;
+using TutorialsXamarin.Business.Models;
 using TutorialsXamarin.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

@@ -1,19 +1,24 @@
-﻿using Xamarin.Forms;
+﻿using TutorialsXamarin.Interfaces;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace TutorialsXamarin.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : FlyoutPage
+    public partial class HomePage
     {
-        public HomePage()
+        private readonly INavigationService _navigationService;
+
+        public HomePage(INavigationService navigationService)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this,false);
             FlyoutPage.ListView.ItemSelected += ListView_ItemSelected;
+
+            _navigationService = navigationService;
         }
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as HomePageFlyoutMenuItem;
             if (item == null)
@@ -23,7 +28,7 @@ namespace TutorialsXamarin.Views
             //page.Title = item.Title;
             //Detail = new NavigationPage(page);
 
-            Detail = App.NavigationService.CreateNavigationPage(item.TargetType);
+            Detail = _navigationService.CreateNavigationPage(item.TargetType);
             
             IsPresented = false;
 

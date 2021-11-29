@@ -1,13 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:TutorialsXamarin.ViewModels;assembly=TutorialsXamarin"
              x:Class="TutorialsXamarin.Views.ViewCustomer"
              Title="Customer Info">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="SubTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Customer Info"  x:Name="LblContent"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        
+        <Grid x:DataType="viewModels:ViewCustomerViewModel"
+              Padding="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".7*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!--Define Labels-->
+            <Label Grid.Row="0" Grid.Column="0" Text="Code:" Style="{StaticResource TitleStyle}"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="FirstName:" Style="{StaticResource TitleStyle}"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="LastName:" Style="{StaticResource TitleStyle}"/>
+            <Label Grid.Row="3" Grid.Column="0" Text="DateOfBirth:" Style="{StaticResource TitleStyle}"/>
+            <Label Grid.Row="4" Grid.Column="0" Text="Image:" Style="{StaticResource TitleStyle}"/>
+
+            <!--Define Holder-->
+            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Customer.Code }"  Style="{StaticResource SubTitleStyle}"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Customer.FirstName }" Style="{StaticResource SubTitleStyle}"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Customer.LastName }" Style="{StaticResource SubTitleStyle}"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Customer.DateOfBirth }" Style="{StaticResource SubTitleStyle}"/>
+            <Image Grid.Row="4" Grid.Column="1" Source="{Binding Customer.Image}" HorizontalOptions="Start"/>
+
+            <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="Customers List" Command="{Binding GoToCustomersListCommand}"/>
+
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

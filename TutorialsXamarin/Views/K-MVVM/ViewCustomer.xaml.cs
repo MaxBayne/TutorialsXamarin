@@ -1,21 +1,27 @@
-﻿using TutorialsXamarin.Utilities;
-using TutorialsXamarin.ViewModels;
+﻿using TutorialsXamarin.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace TutorialsXamarin.Views
 {
+    [QueryProperty(nameof(CustomerCode),"id")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewCustomer : ContentPage
+    public partial class ViewCustomer
     {
-        public ViewCustomer()
+        private readonly IViewCustomerViewModel _viewModel;
+
+        public ViewCustomer(IViewCustomerViewModel viewCustomerViewModel)
         {
             InitializeComponent();
 
-            App.MessagingService.Subscribe<MvvmViewModel, string>(this, MessagesNames.Notification, (sender, args) =>
-            {
-                LblContent.Text = args;
-            });
+            //BindingContext = _viewModel = ViewModelLocator.ViewCustomerViewModel;
+            BindingContext = _viewModel = viewCustomerViewModel;
         }
+
+        public string CustomerCode
+        {
+            set => _viewModel.GetCustomerCommand.Execute(value);
+        }
+        
     }
 }

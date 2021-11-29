@@ -1,7 +1,7 @@
-﻿using TutorialsXamarin.Interfaces;
+﻿using Autofac;
+using TutorialsXamarin.Caching.Services;
+using TutorialsXamarin.DependencyInjection.Services;
 using TutorialsXamarin.Services;
-using TutorialsXamarin.Utilities;
-using TutorialsXamarin.Views;
 using Xamarin.Forms;
 
 
@@ -10,15 +10,33 @@ namespace TutorialsXamarin
     // ReSharper disable once RedundantExtendsListEntry
     public partial class App : Application
     {
+        /// <summary>
+        /// Main Container that Hold All Dependency Components , use Scope From this and Avoid Resolve Direct From Container To Prevent Memory leaks 
+        /// </summary>
+        public static IContainer Container;
+
+        //public static INavigationService NavigationService;
+
+        public const string ApiUrl = "http://192.168.1.50/WebAPi/api/v1";
+
         public App()
         {
             InitializeComponent();
 
-            //Store All Views Names inside Navigation Service
-            RegisterViews();
+            //Configure Services -------------------------------------------------
 
-            //Using Xamarin Shell For Navigation
-            MainPage = new AppShell();
+            //Config Dependency Injection
+            DependencyInjectionService.ConfigureDependency(ref Container);
+
+            //Prepare Caching For System
+            CachingService.ConfigCaching();
+
+            //Prepare Navigation Service
+            NavigationService.ConfigNavigation();
+
+            
+            //---------------------------------------------------------------------
+            
 
             //MainPage = new MainPage();
             //MainPage = NavigationService.CreateNavigationPage(ViewsNames.HomePage);
@@ -153,25 +171,5 @@ namespace TutorialsXamarin
         {
         }
 
-        #region Dependency Injection
-
-        public static ICustomersService CustomersService { get; } = new CustomersService();
-        public static INavigationService NavigationService { get; } = new NavigationService();
-        public static IMessagingCenter MessagingService { get; } = new MessagingService();
-
-        #endregion
-
-        #region Register Views
-
-        private void RegisterViews()
-        {
-            //Store All Views Names inside Navigation Service
-            NavigationService.Register(ViewsNames.HomePage, typeof(HomePage));
-
-            NavigationService.Register(ViewsNames.AddCustomer, typeof(AddCustomer));
-            NavigationService.Register(ViewsNames.ViewCustomer, typeof(ViewCustomer));
-        }
-
-        #endregion
     }
 }

@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TutorialsXamarin.Business\TutorialsXamarin.Business.csproj" />
+    <ProjectReference Include="..\TutorialsXamarin.Common\TutorialsXamarin.Common.csproj" />
+  </ItemGroup>
+
 
 </Project>
